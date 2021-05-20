@@ -7,11 +7,28 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class WindowMain; }
 QT_END_NAMESPACE
 
+/*! \class WindowMain
+ * \brief The class is the main ui for the ptogram
+ *
+ * Incudes: QMainWindow
+ *
+ * Inherits: QMainWindow
+ *
+ * \author Created by: Sailordi
+ * \author Last to touch it: Sailordi
+ *
+ * \date Created: 2021-05-20
+ * \date Last update: 2021-05-20
+*/
 class WindowMain : public QMainWindow
 {
     Q_OBJECT
 public:
+    /*! Constructor
+     * \param parent - The windows parent [Default: nullptr]
+    */
     WindowMain(QWidget *parent = nullptr);
+    /*! Deconstructor */
     ~WindowMain();
 
 private:
