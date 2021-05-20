@@ -60,6 +60,10 @@ private:
      * \param i - The file info
     */
     void dir(QFileInfo i);
+    /*! Copying the file into the output path
+     * \param i - The file info
+    */
+    void file(QFileInfo i);
 
 };
 #endif // COLLECTOR_H
