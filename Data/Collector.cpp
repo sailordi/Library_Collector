@@ -1,5 +1,7 @@
 #include "Collector.h"
 
+#include <QDir>
+
 //Public functions
 Collector::Collector(QString fromPath,QString toPath,QStringList suffix,bool createDirs) {
     this->v_fromPath = fromPath;
@@ -10,4 +12,22 @@ Collector::Collector(QString fromPath,QString toPath,QStringList suffix,bool cre
 
 Collector::~Collector() {
 
+}
+
+bool Collector::canCollect() {
+    if(this->v_fromPath.isEmpty() == true) {
+        return false;
+    }
+    else if(this->v_fromPath.isEmpty() == false && QDir(this->v_fromPath).exists() == false) {
+        return false;
+    }
+
+    if(this->v_toPath.isEmpty() == true) {
+        return false;
+    }
+    if(this->v_toPath.compare("/") == 0) {
+        return false;
+    }
+
+    return true;
 }

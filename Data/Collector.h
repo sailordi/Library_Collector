@@ -30,6 +30,11 @@ public:
     /*! Deconstructor */
     ~Collector();
 
+    /*! Checks if collection can be preformed
+     * \returns bool
+    */
+    bool canCollect();
+
 private:
     QString v_fromPath = "",v_toPath = "";
     bool v_createDirs;
