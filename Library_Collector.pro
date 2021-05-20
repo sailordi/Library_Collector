@@ -9,9 +9,11 @@ CONFIG(release,debug|release)   { TARGET = Library_Collector }
 CONFIG(debug,debug|release)     { TARGET = Library_Collector_D }
 
 SOURCES += main.cpp \
+    Data/Collector.cpp \
     WindowMain.cpp
 
 HEADERS += \
+    Data/Collector.h \
     WindowMain.h
 
 FORMS += \
