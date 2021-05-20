@@ -38,6 +38,9 @@ private slots:
     /*! Slot that is activated when header path selection button is clicked */
     void libraryHeaderPathBtnClicked();
 
+    /*! Slot that is activated when debug build path selection button is clicked */
+    void libraryDebugPathBtnClicked();
+
 private:
     Ui::WindowMain* v_ui = nullptr;
 

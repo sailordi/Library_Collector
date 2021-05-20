@@ -11,6 +11,7 @@ WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::Wind
 
     connect(this->v_ui->libraryHeaderPath_btn,&QPushButton::clicked,this,&WindowMain::libraryHeaderPathBtnClicked);
 
+    connect(this->v_ui->libraryDebugPath_btn,&QPushButton::clicked,this,&WindowMain::libraryDebugPathBtnClicked);
 }
 
 WindowMain::~WindowMain() {
@@ -36,4 +37,14 @@ void WindowMain::libraryHeaderPathBtnClicked() {
         }
 
         this->v_ui->libraryHeaderPath_edit->setText(str);
+}
+
+void WindowMain::libraryDebugPathBtnClicked() {
+    QString str = QFileDialog::getExistingDirectory(nullptr,"Select library debug path...","");
+
+        if(str.isEmpty() == true) {
+            return;
+        }
+
+        this->v_ui->libraryDebugPath_edit->setText(str);
 }
