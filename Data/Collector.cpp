@@ -2,6 +2,7 @@
 
 #include <QChar>
 #include <QDir>
+#include <QFileInfo>
 
 //Public functions
 Collector::Collector(QString fromPath,QString toPath,QStringList suffix,bool createDirs) {
@@ -54,5 +55,26 @@ void Collector::createPath(QString path) {
         if(d.exists() == false) {
             d.mkdir(path);
         }
+
+}
+
+//Private functions
+void Collector::dir(QFileInfo i) {
+    if(i.isDir() == false) {
+        return;
+    }
+
+    QString n = (this->v_createDirs == false) ? "" : i.baseName();
+
+    if(i.baseName().isEmpty() == true) {
+        return;
+    }
+
+    QString toP = Collector::formatOutPath(this->v_toPath,n);
+    QString fromP = i.absolutePath()+"/"+i.baseName()+"/";
+
+    if(this->v_createDirs == true) {
+        Collector::createPath(toP);
+    }
 
 }

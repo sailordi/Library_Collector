@@ -4,12 +4,16 @@
 #include <QString>
 #include <QStringList>
 
+class QFileInfo;
+
 /*! \class Collector
  * \brief The class will collect the nessesery info
  *
  * The info is copied from a path into another
  *
  * Includes: QString & QStringList
+ *
+ * Forward declarations: QFileInfo
  *
  * \author Created by: Sailordi
  * \author Last to touch it: Sailordi
@@ -51,6 +55,11 @@ private:
     QString v_fromPath = "",v_toPath = "";
     bool v_createDirs;
     QStringList v_suffix;
+
+    /*! Creates a folder in the output path and performs collection of the dirs files
+     * \param i - The file info
+    */
+    void dir(QFileInfo i);
 
 };
 #endif // COLLECTOR_H
