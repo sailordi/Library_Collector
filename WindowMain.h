@@ -43,6 +43,9 @@ private slots:
     /*! Slot that is activated when releas build path selection button is clicked */
     void libraryReleasePathBtnClicked();
 
+    /*! Slot that is activated when preform collection button is clicked */
+    void preformCollectionBtnClicked();
+
 private:
     Ui::WindowMain* v_ui = nullptr;
 
