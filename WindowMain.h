@@ -35,6 +35,9 @@ private slots:
     /*! Slot that is activated when output path selection button is clicked */
     void libraryOutPathBtnClicked();
 
+    /*! Slot that is activated when header path selection button is clicked */
+    void libraryHeaderPathBtnClicked();
+
 private:
     Ui::WindowMain* v_ui = nullptr;
 
