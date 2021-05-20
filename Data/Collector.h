@@ -42,6 +42,11 @@ public:
     */
     static QString formatOutPath(QString dirPath,QString dirName);
 
+    /*! Creates a folder if it does not already exist
+     * \param path - The full path of the folder to be created
+    */
+    static void createPath(QString path);
+
 private:
     QString v_fromPath = "",v_toPath = "";
     bool v_createDirs;

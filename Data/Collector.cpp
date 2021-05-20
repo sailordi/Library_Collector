@@ -47,3 +47,12 @@ QString Collector::formatOutPath(QString dirPath,QString dirName) {
 
     return dirPath+"/"+dirName+"/";
 }
+
+void Collector::createPath(QString path) {
+    QDir d(path);
+
+        if(d.exists() == false) {
+            d.mkdir(path);
+        }
+
+}
