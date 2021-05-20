@@ -1,5 +1,6 @@
 #include "Collector.h"
 
+#include <QChar>
 #include <QDir>
 
 //Public functions
@@ -30,4 +31,19 @@ bool Collector::canCollect() {
     }
 
     return true;
+}
+
+QString Collector::formatOutPath(QString dirPath,QString dirName) {
+    if(dirPath.isEmpty() == false && dirPath.at(dirPath.size()-1) == QChar('/') ) {
+        dirPath.resize(dirPath.size()-1);
+    }
+
+    if(dirPath.isEmpty() == true) {
+        return "";
+    }
+    if(dirName.isEmpty() == true) {
+        return dirPath+"/";
+    }
+
+    return dirPath+"/"+dirName+"/";
 }

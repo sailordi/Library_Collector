@@ -35,6 +35,13 @@ public:
     */
     bool canCollect();
 
+    /*! Formats the output path string
+     * \param dirPath - The dirs path
+     * \param dirName - The dirs name
+     * \returns QString
+    */
+    static QString formatOutPath(QString dirPath,QString dirName);
+
 private:
     QString v_fromPath = "",v_toPath = "";
     bool v_createDirs;
