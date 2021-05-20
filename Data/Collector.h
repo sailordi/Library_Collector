@@ -51,6 +51,9 @@ public:
     */
     static void createPath(QString path);
 
+    /*! Preforms collection */
+    void collect();
+
 private:
     QString v_fromPath = "",v_toPath = "";
     bool v_createDirs;
