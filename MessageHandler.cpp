@@ -59,3 +59,13 @@ void MessageHandler::collectionCheck(QString outP,QString outN,QString headerP,Q
 Notice* MessageHandler::collection() {
     return new Notice("The collection has been performed");
 }
+
+Notice* MessageHandler::saveLoadData(QString path,QString fileName,bool save) {
+    QString str = Helper::newRow(2)+"Path: "+path+Helper::newRow(2)+"File name: "+fileName+Helper::newRow(2);
+
+        if(save == true) {
+            return new Notice("Data has been saved"+str);
+        }
+        return new Notice("Data has been loaded"+str);
+
+}

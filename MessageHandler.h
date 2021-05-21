@@ -35,5 +35,13 @@ namespace MessageHandler {
     */
     Notice* collection();
 
+    /*! Data is saved / loaded
+     * \param path - Path the data was saved to
+     * \param fileName - The files name
+     * \param save - If the message is for data being saved
+     * \returns Notice*
+    */
+    Notice* saveLoadData(QString path,QString fileName,bool save);
+
 };
 #endif // MESSAGEHANDLER_H
