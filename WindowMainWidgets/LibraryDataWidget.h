@@ -45,6 +45,11 @@ public:
     */
     void setName(QString str);
 
+    /*! Returns the path data
+     * \returns QString
+    */
+    QString path();
+
 private:
     QLabel* v_dataL = nullptr,*v_pathL = nullptr,*v_nameL = nullptr;
     QTextEdit* v_pathE = nullptr;

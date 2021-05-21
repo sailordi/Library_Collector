@@ -46,6 +46,10 @@ void LibraryDataWidget::setName(QString str) {
     }
 }
 
+QString LibraryDataWidget::path() {
+    return this->v_pathE->toPlainText();
+}
+
 //Private functions
 void LibraryDataWidget::init(QString dataStr) {
     this->v_dataL = new QLabel(dataStr,this->v_p);
