@@ -8,6 +8,7 @@ namespace Ui { class WindowMain; }
 QT_END_NAMESPACE
 
 class LibraryDataWidget;
+class NoticeAdapter;
 
 /*! \class WindowMain
  * \brief The class is the main ui for the ptogram
@@ -16,7 +17,7 @@ class LibraryDataWidget;
  *
  * Inherits: QMainWindow
  *
- * Forward declarations: LibraryDataWidget
+ * Forward declarations: LibraryDataWidget & NoticeAdapter
  *
  * \author Created by: Sailordi
  * \author Last to touch it: Sailordi
@@ -55,6 +56,8 @@ private:
 
     LibraryDataWidget* v_outDataW = nullptr,*v_headerDataW = nullptr;
     LibraryDataWidget* v_debugDataW = nullptr,*v_releaseDataW = nullptr;
+
+    NoticeAdapter* v_noticeA = nullptr;
 
 };
 #endif // WINDOWMAIN_H

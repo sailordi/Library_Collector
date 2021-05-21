@@ -3,6 +3,8 @@
 
 #include <QFileDialog>
 
+#include "MessageHandler.h"
+#include "Adapter/NoticeAdapter.h"
 #include "Data/Collector.h"
 #include "WindowMainWidgets/LibraryDataWidget.h"
 
@@ -15,6 +17,8 @@ WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::Wind
     this->v_releaseDataW = new LibraryDataWidget(this->v_ui->libraryRelease_layout,"Library release",false);
     this->v_debugDataW = new LibraryDataWidget(this->v_ui->libraryDebug_layout,"Library debug",false);
 
+    this->v_noticeA = new NoticeAdapter(this);
+
     connect(this->v_outDataW->selectPathBtn(),&QPushButton::clicked,this,&WindowMain::libraryOutPathBtnClicked);
 
     connect(this->v_headerDataW->selectPathBtn(),&QPushButton::clicked,this,&WindowMain::libraryHeaderPathBtnClicked);
@@ -26,6 +30,8 @@ WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::Wind
 }
 
 WindowMain::~WindowMain() {
+    delete this->v_noticeA;
+
     delete this->v_outDataW;
     delete this->v_headerDataW;
     delete this->v_releaseDataW;
@@ -79,11 +85,18 @@ void WindowMain::preformCollectionBtnClicked() {
     QString outP = this->v_outDataW->path(), outN = this->v_outDataW->name();
     QString hP = this->v_headerDataW->path(), dP = this->v_debugDataW->path(), rP = this->v_releaseDataW->path();
 
-        if(outP.isEmpty() == true) {
-            return;
-        }
-        else if(outN.isEmpty() == true) {
-            return;
+        this->v_noticeA->reset("Preform collection");
+
+        try {
+            MessageHandler::collectionCheck(outP,outN,hP,rP,dP);
+        }catch(NoticePair p) {
+            this->v_noticeA->add(p.first,p.second);
+
+            if(p.second == NoticeFlag::ERROR) {
+                this->v_noticeA->show();
+                return;
+            }
+
         }
 
         QString outPut = Collector::formatOutPath(outP,outN);
@@ -111,5 +124,8 @@ void WindowMain::preformCollectionBtnClicked() {
         if(bR.canCollect() == true) {
             bR.collect();
         }
+        this->v_noticeA->add(MessageHandler::collection(),NoticeFlag::MESSAGE);
+
+        this->v_noticeA->show();
 
 }
