@@ -392,7 +392,32 @@
      <bold>true</bold>
     </font>
    </property>
+   <widget class="QMenu" name="menuSaveLoadData">
+    <property name="title">
+     <string>Save / Load data</string>
+    </property>
+    <addaction name="actionSaveData"/>
+    <addaction name="separator"/>
+    <addaction name="actionLoadData"/>
+   </widget>
+   <addaction name="menuSaveLoadData"/>
   </widget>
+  <action name="actionSaveData">
+   <property name="text">
+    <string>Save data</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+  </action>
+  <action name="actionLoadData">
+   <property name="text">
+    <string>Load data</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
