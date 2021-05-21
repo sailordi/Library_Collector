@@ -11,3 +11,17 @@ Created the project
 Created the class Collector
 Added UI elements the WindowMain UI will need
 Added slots that are needed in the WindowMain
+```
+## V2
+```
+Added libraries that will be used in the project
+Created the class LibraryDataWidget
+Created the class MessageHandler
+Created the class NoticeAdapter
+Updated the UI with menu items for saving / loading the programs data
+Added function that saves the window settings
+Added function that loads the window setting
+Added slot that will save the programs data
+Added slot that will load the programs data
+Fixed issue where collection did not work
+```
