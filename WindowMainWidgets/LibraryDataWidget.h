@@ -36,6 +36,11 @@ public:
     */
     LibraryDataWidget(QGridLayout* l,QString dataStr,bool name,QWidget *parent = nullptr);
 
+    /*! Sets the path data
+     * \param str - Path string
+    */
+    void setPath(QString str);
+
 private:
     QLabel* v_dataL = nullptr,*v_pathL = nullptr,*v_nameL = nullptr;
     QTextEdit* v_pathE = nullptr;
