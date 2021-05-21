@@ -61,6 +61,8 @@ private:
 
     /*! Saves the windows settings */
     void saveWindowSettings();
+    /*! Loads the windows settings */
+    void loadWindowSettings();
 
 };
 #endif // WINDOWMAIN_H

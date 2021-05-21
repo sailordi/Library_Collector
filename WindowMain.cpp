@@ -29,6 +29,8 @@ WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::Wind
     connect(this->v_releaseDataW->selectPathBtn(),&QPushButton::clicked,this,&WindowMain::libraryReleasePathBtnClicked);
 
     connect(this->v_ui->preformCollection_btn,&QPushButton::clicked,this,&WindowMain::preformCollectionBtnClicked);
+
+    this->loadWindowSettings();
 }
 
 WindowMain::~WindowMain() {
@@ -147,4 +149,18 @@ void WindowMain::saveWindowSettings() {
         s.endGroup();
 
         this->v_noticeA->saveLoadSettings(&s,true);
+}
+
+void WindowMain::loadWindowSettings() {
+    Settings s("./Settings/LibraryColectorData.libColSet",false);
+
+        s.startGroup("WindowMain");
+
+        QPoint pos = s.getBlockData("Pos",QPoint(100,100) ).toPoint();
+
+        this->move(pos);
+
+        s.endGroup();
+
+        this->v_noticeA->saveLoadSettings(&s,false);
 }
