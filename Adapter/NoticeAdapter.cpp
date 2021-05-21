@@ -1,6 +1,7 @@
 #include "NoticeAdapter.h"
 
 #include "Message/Notice/NoticeList.h"
+#include "Message/Notice/NoticeFlag.h"
 #include "Message/Notice/NoticePage.h"
 #include "Message/WindowNotice.h"
 
@@ -16,6 +17,10 @@ NoticeAdapter::NoticeAdapter(QWidget* parent) {
 
 NoticeAdapter::~NoticeAdapter() {
     delete this->v_windowN;
+}
+
+void NoticeAdapter::add(Notice* n,NoticeFlag f) {
+    this->list()->add(n,f);
 }
 
 QSharedPointer<NoticeList> NoticeAdapter::list() {
