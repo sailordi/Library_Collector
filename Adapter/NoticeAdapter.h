@@ -45,6 +45,11 @@ public:
     */
     QSharedPointer<NoticeList> list();
 
+    /*! Resets the data and sets the WindowNotice title
+     * \param title - The WindowNotice title
+    */
+    void reset(QString title);
+
 private:
     WindowNotice* v_windowN = nullptr;
     QSharedPointer<NoticePage> v_page;
