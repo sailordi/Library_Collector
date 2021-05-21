@@ -54,6 +54,11 @@ public:
     */
     QString name();
 
+    /*! Returns the select path button
+     * \returns QPushButton*
+    */
+    QPushButton* selectPathBtn();
+
 private:
     QLabel* v_dataL = nullptr,*v_pathL = nullptr,*v_nameL = nullptr;
     QTextEdit* v_pathE = nullptr;
