@@ -40,6 +40,10 @@ public:
      * \param str - Path string
     */
     void setPath(QString str);
+    /*! Sets the name data if field is needed
+     * \param str - Name string
+    */
+    void setName(QString str);
 
 private:
     QLabel* v_dataL = nullptr,*v_pathL = nullptr,*v_nameL = nullptr;
