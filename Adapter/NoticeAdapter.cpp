@@ -1,5 +1,7 @@
 #include "NoticeAdapter.h"
 
+#include "Base/Settings/Settings.h"
+
 #include "Message/Notice/NoticeList.h"
 #include "Message/Notice/NoticeFlag.h"
 #include "Message/Notice/NoticePage.h"
@@ -44,4 +46,8 @@ void NoticeAdapter::show() {
     this->v_windowN->prepare();
 
     this->v_windowN->show();
+}
+
+void NoticeAdapter::saveLoadSettings(Settings* s,bool save) {
+    (save == true) ? this->v_windowN->saveSettings(s) : this->v_windowN->loadSettings(s);
 }

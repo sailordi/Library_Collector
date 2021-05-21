@@ -7,6 +7,7 @@
 class Notice;
 class NoticeList;
 class NoticePage;
+class Settings;
 class WindowNotice;
 
 enum class NoticeFlag;
@@ -16,7 +17,7 @@ enum class NoticeFlag;
  *
  * Incudes: QWidget & QSharedPointer
  *
- * Forward declarations: Notice, NoticeFlag.h ,NoticeList, NoticePage & WindowNotice
+ * Forward declarations: Notice, NoticeFlag.h ,NoticeList, NoticePage, Settings & WindowNotice
  *
  * \author Created by: Sailordi
  * \author Last to touch it: Sailordi
@@ -52,6 +53,12 @@ public:
 
     /*! Prepares and shows the WindowNotice */
     void show();
+
+    /*! Saves or loads the windows settings
+     * \param s - The settings handle
+     * \param save - If settings should be saved
+    */
+    void saveLoadSettings(Settings* s,bool save);
 
 private:
     WindowNotice* v_windowN = nullptr;
