@@ -53,6 +53,8 @@ private slots:
 
     /*! Saves the program data */
     void saveProgramData();
+    /*! Loads the program data */
+    void loadProgramData();
 
 private:
     Ui::WindowMain* v_ui = nullptr;

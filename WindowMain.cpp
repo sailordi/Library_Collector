@@ -31,6 +31,7 @@ WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::Wind
     connect(this->v_ui->preformCollection_btn,&QPushButton::clicked,this,&WindowMain::preformCollectionBtnClicked);
 
     connect(this->v_ui->actionSaveData,&QAction::triggered,this,&WindowMain::saveProgramData);
+    connect(this->v_ui->actionLoadData,&QAction::triggered,this,&WindowMain::loadProgramData);
 
     this->loadWindowSettings();
 }
@@ -169,6 +170,40 @@ void WindowMain::saveProgramData() {
     QFileInfo f(str);
 
     this->v_noticeA->add(MessageHandler::saveLoadData(f.path(),f.fileName(),true),NoticeFlag::MESSAGE);
+    this->v_noticeA->show();
+}
+
+void WindowMain::loadProgramData() {
+    QString str = QFileDialog::getOpenFileName(nullptr,"Load Library collect..",QString(),"Library collector Data(*.LibColData)");
+
+    if(str.isEmpty() == true) {
+        return;
+    }
+
+    this->v_noticeA->reset("Library collector data loaded");
+
+    Settings s(str);
+
+    s.startGroup("OutputData");
+    this->v_outDataW->setPath(s.getBlockData("Path","").toString() );
+    this->v_outDataW->setName(s.getBlockData("Name","").toString() );
+    s.endGroup();
+
+    s.startGroup("HeaderData");
+    this->v_headerDataW->setPath(s.getBlockData("Path","").toString() );
+    s.endGroup();
+
+    s.startGroup("ReleaseData");
+    this->v_releaseDataW->setPath(s.getBlockData("Path","").toString() );
+    s.endGroup();
+
+    s.startGroup("DebugData");
+    this->v_debugDataW->setPath(s.getBlockData("Path","").toString() );
+    s.endGroup();
+
+    QFileInfo f(str);
+
+    this->v_noticeA->add(MessageHandler::saveLoadData(f.path(),f.fileName(),false),NoticeFlag::MESSAGE);
     this->v_noticeA->show();
 }
 
