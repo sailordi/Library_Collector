@@ -45,11 +45,13 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$${LIBRARIES_PATH} -lMessage_
 
 SOURCES += main.cpp \
     Data/Collector.cpp \
-    WindowMain.cpp
+    WindowMain.cpp \
+    WindowMainWidgets/LibraryDataWidget.cpp
 
 HEADERS += \
     Data/Collector.h \
-    WindowMain.h
+    WindowMain.h \
+    WindowMainWidgets/LibraryDataWidget.h
 
 FORMS += \
     WindowMain.ui
