@@ -7,6 +7,8 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class WindowMain; }
 QT_END_NAMESPACE
 
+class LibraryDataWidget;
+
 /*! \class WindowMain
  * \brief The class is the main ui for the ptogram
  *
@@ -14,11 +16,13 @@ QT_END_NAMESPACE
  *
  * Inherits: QMainWindow
  *
+ * Forward declarations: LibraryDataWidget
+ *
  * \author Created by: Sailordi
  * \author Last to touch it: Sailordi
  *
  * \date Created: 2021-05-20
- * \date Last update: 2021-05-20
+ * \date Last update: 2021-05-21
 */
 class WindowMain : public QMainWindow
 {
@@ -48,6 +52,9 @@ private slots:
 
 private:
     Ui::WindowMain* v_ui = nullptr;
+
+    LibraryDataWidget* v_outDataW = nullptr,*v_headerDataW = nullptr;
+    LibraryDataWidget* v_debugDataW = nullptr,*v_releaseDataW = nullptr;
 
 };
 #endif // WINDOWMAIN_H
