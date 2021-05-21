@@ -30,5 +30,10 @@ namespace MessageHandler {
     */
     void collectionCheck(QString outP,QString outN,QString headerP,QString releaseP,QString debugP);
 
+    /*! Collection is done
+     * \returns Notice*
+    */
+    Notice* collection();
+
 };
 #endif // MESSAGEHANDLER_H

@@ -55,3 +55,7 @@ void MessageHandler::collectionCheck(QString outP,QString outN,QString headerP,Q
         }
 
 }
+
+Notice* MessageHandler::collection() {
+    return new Notice("The collection has been performed");
+}
