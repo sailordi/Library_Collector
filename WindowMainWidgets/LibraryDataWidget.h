@@ -44,5 +44,8 @@ private:
 
     bool v_name;
 
+    /*! Initializes widgets that are used */
+    void init(QString dataStr);
+
 };
 #endif // LIBRARYDATAWIDGET_H
