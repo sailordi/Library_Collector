@@ -50,6 +50,9 @@ public:
     */
     void reset(QString title);
 
+    /*! Prepares and shows the WindowNotice */
+    void show();
+
 private:
     WindowNotice* v_windowN = nullptr;
     QSharedPointer<NoticePage> v_page;

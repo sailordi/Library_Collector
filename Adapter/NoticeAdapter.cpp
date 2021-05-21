@@ -39,3 +39,9 @@ void NoticeAdapter::reset(QString title) {
     }
 
 }
+
+void NoticeAdapter::show() {
+    this->v_windowN->prepare();
+
+    this->v_windowN->show();
+}
