@@ -50,6 +50,10 @@ QString LibraryDataWidget::path() {
     return this->v_pathE->toPlainText();
 }
 
+QString LibraryDataWidget::name() {
+    return (this->v_name == true) ? this->v_nameE->text() : "";
+}
+
 //Private functions
 void LibraryDataWidget::init(QString dataStr) {
     this->v_dataL = new QLabel(dataStr,this->v_p);

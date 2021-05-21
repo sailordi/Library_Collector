@@ -49,6 +49,10 @@ public:
      * \returns QString
     */
     QString path();
+    /*! Returns the name data if field is needed else empty
+     * \returns QString
+    */
+    QString name();
 
 private:
     QLabel* v_dataL = nullptr,*v_pathL = nullptr,*v_nameL = nullptr;
