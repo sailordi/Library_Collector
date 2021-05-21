@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QSharedPointer>
 
+class NoticeList;
 class NoticePage;
 class WindowNotice;
 
@@ -12,7 +13,7 @@ class WindowNotice;
  *
  * Incudes: QWidget & QSharedPointer
  *
- * Forward declarations: NoticePage & WindowNotice
+ * Forward declarations: NoticeList, NoticePage & WindowNotice
  *
  * \author Created by: Sailordi
  * \author Last to touch it: Sailordi
@@ -29,6 +30,11 @@ public:
     explicit NoticeAdapter(QWidget *parent = nullptr);
     /*! Deconstructor */
     ~NoticeAdapter();
+
+    /*! Returns the NoticeList the program uses
+     * \returns QSharedPointer<NoticeList>
+    */
+    QSharedPointer<NoticeList> list();
 
 private:
     WindowNotice* v_windowN = nullptr;
