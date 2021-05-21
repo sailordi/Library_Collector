@@ -51,6 +51,9 @@ private slots:
     /*! Slot that is activated when preform collection button is clicked */
     void preformCollectionBtnClicked();
 
+    /*! Saves the program data */
+    void saveProgramData();
+
 private:
     Ui::WindowMain* v_ui = nullptr;
 
