@@ -3,6 +3,8 @@
 
 #include <QFileDialog>
 
+#include "Base/Settings/Settings.h"
+
 #include "MessageHandler.h"
 #include "Adapter/NoticeAdapter.h"
 #include "Data/Collector.h"
@@ -30,6 +32,8 @@ WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::Wind
 }
 
 WindowMain::~WindowMain() {
+    this->saveWindowSettings();
+
     delete this->v_noticeA;
 
     delete this->v_outDataW;
@@ -128,4 +132,19 @@ void WindowMain::preformCollectionBtnClicked() {
 
         this->v_noticeA->show();
 
+}
+
+//Private functions
+void WindowMain::saveWindowSettings() {
+    Settings s("./Settings/LibraryColectorData.libColSet");
+
+        s.startGroup("WindowMain");
+
+        QPoint pos = this->pos();
+
+        s.addBlockData("Pos",pos);
+
+        s.endGroup();
+
+        this->v_noticeA->saveLoadSettings(&s,true);
 }

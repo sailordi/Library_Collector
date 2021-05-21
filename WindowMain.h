@@ -59,5 +59,8 @@ private:
 
     NoticeAdapter* v_noticeA = nullptr;
 
+    /*! Saves the windows settings */
+    void saveWindowSettings();
+
 };
 #endif // WINDOWMAIN_H
