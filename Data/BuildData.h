@@ -36,11 +36,19 @@ public:
      * \param buildName - The build name
     */
     void setBuildName(QString buildName);
+    /*! Sets the debug path
+     * \param debugPath - The debug path
+    */
+    void setDebugPath(QString debugPath);
 
     /*! Returns the build name
      * \returns QString
     */
     QString buildName();
+    /*! Return the debug path
+     * \returns QString
+    */
+    QString debugPath();
 
 private:
     QString v_buildName = "",v_debugPath = "",v_releasePath = "";

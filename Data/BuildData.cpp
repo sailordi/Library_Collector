@@ -16,6 +16,14 @@ void BuildData::setBuildName(QString buildName) {
     this->v_buildName = buildName;
 }
 
+void BuildData::setDebugPath(QString debugPath) {
+    this->v_debugPath = debugPath;
+}
+
 QString BuildData::buildName() {
     return this->v_buildName;
+}
+
+QString BuildData::debugPath() {
+    return this->v_debugPath;
 }
