@@ -20,10 +20,18 @@ void BuildData::setDebugPath(QString debugPath) {
     this->v_debugPath = debugPath;
 }
 
+void BuildData::setReleasePath(QString releasePath) {
+    this->v_releasePath = releasePath;
+}
+
 QString BuildData::buildName() {
     return this->v_buildName;
 }
 
 QString BuildData::debugPath() {
     return this->v_debugPath;
+}
+
+QString BuildData::releasePath() {
+    return this->v_releasePath;
 }
