@@ -45,6 +45,7 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$${LIBRARIES_PATH} -lMessage_
 
 SOURCES += main.cpp \
     Adapter/NoticeAdapter.cpp \
+    Data/BuildData.cpp \
     Data/Collector.cpp \
     MessageHandler.cpp \
     WindowMain.cpp \
@@ -52,6 +53,7 @@ SOURCES += main.cpp \
 
 HEADERS += \
     Adapter/NoticeAdapter.h \
+    Data/BuildData.h \
     Data/Collector.h \
     MessageHandler.h \
     WindowMain.h \
