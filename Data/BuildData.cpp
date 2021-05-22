@@ -11,3 +11,11 @@ BuildData::BuildData(QStringList data,QObject* parent) : QObject(parent) {
     this->v_debugPath = data.takeFirst();
     this->v_releasePath = data.takeFirst();
 }
+
+void BuildData::setBuildName(QString buildName) {
+    this->v_buildName = buildName;
+}
+
+QString BuildData::buildName() {
+    return this->v_buildName;
+}

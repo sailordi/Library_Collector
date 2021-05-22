@@ -32,6 +32,16 @@ public:
     */
     explicit BuildData(QStringList data,QObject *parent = nullptr);
 
+    /*! Sets the build name
+     * \param buildName - The build name
+    */
+    void setBuildName(QString buildName);
+
+    /*! Returns the build name
+     * \returns QString
+    */
+    QString buildName();
+
 private:
     QString v_buildName = "",v_debugPath = "",v_releasePath = "";
 
