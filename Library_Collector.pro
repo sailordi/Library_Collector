@@ -54,6 +54,7 @@ SOURCES += main.cpp \
 HEADERS += \
     Adapter/NoticeAdapter.h \
     Data/BuildData.h \
+    Data/BuildDataTypedefs.h \
     Data/Collector.h \
     MessageHandler.h \
     WindowMain.h \
