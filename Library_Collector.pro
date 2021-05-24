@@ -49,7 +49,7 @@ SOURCES += main.cpp \
     Data/Collector.cpp \
     MessageHandler.cpp \
     WindowMain.cpp \
-    WindowMainWidgets/LibraryDataWidget.cpp
+    WindowMainWidgets/MainInfoWidget.cpp
 
 HEADERS += \
     Adapter/NoticeAdapter.h \
@@ -58,7 +58,7 @@ HEADERS += \
     Data/Collector.h \
     MessageHandler.h \
     WindowMain.h \
-    WindowMainWidgets/LibraryDataWidget.h
+    WindowMainWidgets/MainInfoWidget.h
 
 FORMS += \
     WindowMain.ui
