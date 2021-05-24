@@ -98,6 +98,15 @@ public:
     */
     void clear(bool onlyText);
 
+private slots:
+    /*! Resets the build name */
+    void resetBuildName_clicked();
+
+    /*! Resets the debug path */
+    void resetDebugPath_clicked();
+    /*! Resets the release path */
+    void resetReleasePath_clicked();
+
 private:
     QLineEdit* v_buildNameE = nullptr;
     QTextEdit* v_debugPathE = nullptr,*v_releasePathE = nullptr;

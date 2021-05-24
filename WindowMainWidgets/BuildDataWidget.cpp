@@ -114,6 +114,28 @@ void BuildDataWidget::clear(bool onlyText) {
 
 }
 
+//Private slots
+void BuildDataWidget::resetBuildName_clicked() {
+    if(this->v_oldBuildData.isNull() == true) {
+        this->setBuildName(this->v_oldBuildData->buildName() );
+    }
+
+}
+
+void BuildDataWidget::resetDebugPath_clicked() {
+    if(this->v_oldBuildData.isNull() == true) {
+        this->setDebugPath(this->v_oldBuildData->debugPath() );
+    }
+
+}
+
+void BuildDataWidget::resetReleasePath_clicked() {
+    if(this->v_oldBuildData.isNull() == true) {
+        this->setReleasePath(this->v_oldBuildData->releasePath() );
+    }
+
+}
+
 //Private functions
 void BuildDataWidget::init() {
     QLabel* buildNameL = new QLabel("Build name",this->v_p);
@@ -130,6 +152,10 @@ void BuildDataWidget::init() {
     this->v_resetBuildNameB  = new QPushButton("Reset",this->v_p);
     this->v_resetDebugPathB = new QPushButton("Reset",this->v_p);
     this->v_resetReleasePathB = new QPushButton("Reset",this->v_p);
+
+    connect(this->v_resetBuildNameB,&QPushButton::clicked,this,&BuildDataWidget::resetBuildName_clicked);
+    connect(this->v_resetDebugPathB,&QPushButton::clicked,this,&BuildDataWidget::resetDebugPath_clicked);
+    connect(this->v_resetReleasePathB,&QPushButton::clicked,this,&BuildDataWidget::resetReleasePath_clicked);
 
     buildNameL->setAlignment(Qt::AlignCenter);
     debugPathL->setAlignment(Qt::AlignCenter);
