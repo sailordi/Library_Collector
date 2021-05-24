@@ -37,5 +37,8 @@ private:
     QLineEdit* v_libraryBaseNameE = nullptr;
     QPushButton* v_outputPathB = nullptr,*v_headerPathB = nullptr;
 
+    /*! Initializes widgets that are used */
+    void init();
+
 };
 #endif // MAININFOWIDGET_H
