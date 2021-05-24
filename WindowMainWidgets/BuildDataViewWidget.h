@@ -39,6 +39,9 @@ public:
     /*! Deconstructor */
     ~BuildDataViewWidget();
 
+    /*! Updates the view with the data from the build data list */
+    void updateView();
+
     /*! Returns the list of build data
      * \returns QList<BuildDataP>
     */
