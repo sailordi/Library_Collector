@@ -48,6 +48,11 @@ public:
     */
     QList<BuildDataP>* buildDataListP();
 
+    /*! Returns the number of selected rows
+     * \returns int
+    */
+    int numberOfSelectedRows();
+
 private:
     QLabel* v_buildInfoL = nullptr;
 

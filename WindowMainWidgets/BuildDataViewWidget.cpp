@@ -27,6 +27,10 @@ QList<BuildDataP>* BuildDataViewWidget::buildDataListP() {
     return &this->v_buildDataList;
 }
 
+int BuildDataViewWidget::numberOfSelectedRows() {
+    return this->v_view->numberOfSelectedRows();
+}
+
 //Private functions
 void BuildDataViewWidget::init() {
     this->v_buildInfoL = new QLabel("Build info [0]",this->v_p);
