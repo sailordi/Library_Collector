@@ -79,6 +79,15 @@ public:
     */
     QString releasePath();
 
+    /*! Returns the debug path selection button
+     * \returns QPushButton*
+    */
+    QPushButton* debugPathButton();
+    /*! Returns the release path selection button
+     * \returns QPushButton*
+    */
+    QPushButton* releasePathButton();
+
     /*! Clears all the data
      * \param onlyText - If only the text should be cleared
     */

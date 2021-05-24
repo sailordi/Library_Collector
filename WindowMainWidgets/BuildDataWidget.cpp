@@ -88,6 +88,14 @@ QString BuildDataWidget::releasePath() {
     return this->v_releasePathE->toPlainText();
 }
 
+QPushButton* BuildDataWidget::debugPathButton() {
+    return this->v_debugPathB;
+}
+
+QPushButton* BuildDataWidget::releasePathButton() {
+    return this->v_releasePathB;
+}
+
 void BuildDataWidget::clear(bool onlyText) {
     this->v_buildNameE->setText("");
     this->v_debugPathE->setText("");
