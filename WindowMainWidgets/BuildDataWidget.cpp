@@ -68,6 +68,14 @@ void BuildDataWidget::updateOldData() {
 
 }
 
+int BuildDataWidget::oldDataPosition() {
+    return this->v_oldDataPosition;
+}
+
+BuildDataP BuildDataWidget::oldData() {
+    return this->v_oldBuildData;
+}
+
 QString BuildDataWidget::buildName() {
     return this->v_buildNameE->text();
 }

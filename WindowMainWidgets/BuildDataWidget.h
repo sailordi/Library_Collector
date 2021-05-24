@@ -58,6 +58,15 @@ public:
     void updateOldData();
 
     /*! Returns the build name
+     * \returns int
+    */
+    int oldDataPosition();
+    /*! Returns the build name
+     * \returns BuildDataP
+    */
+    BuildDataP oldData();
+
+    /*! Returns the build name
      * \returns QString
     */
     QString buildName();
