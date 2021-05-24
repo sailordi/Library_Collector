@@ -39,6 +39,15 @@ public:
     /*! Deconstructor */
     ~BuildDataViewWidget();
 
+    /*! Returns the list of build data
+     * \returns QList<BuildDataP>
+    */
+    QList<BuildDataP> buildDataList();
+    /*! Returns a pointer the list of build data
+     * \returns QList<BuildDataP>*
+    */
+    QList<BuildDataP>* buildDataListP();
+
 private:
     QLabel* v_buildInfoL = nullptr;
 

@@ -19,6 +19,14 @@ BuildDataViewWidget::~BuildDataViewWidget() {
     delete this->v_view;
 }
 
+QList<BuildDataP> BuildDataViewWidget::buildDataList() {
+    return this->v_buildDataList;
+}
+
+QList<BuildDataP>* BuildDataViewWidget::buildDataListP() {
+    return &this->v_buildDataList;
+}
+
 //Private functions
 void BuildDataViewWidget::init() {
     this->v_buildInfoL = new QLabel("Build info [0]",this->v_p);
