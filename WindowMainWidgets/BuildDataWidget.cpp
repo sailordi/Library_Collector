@@ -40,6 +40,10 @@ void BuildDataWidget::setBuildName(QString buildName) {
     this->v_buildNameE->setText(buildName);
 }
 
+void BuildDataWidget::setDebugPath(QString debugPath) {
+    this->v_debugPathE->setText(debugPath);
+}
+
 void BuildDataWidget::updateOldData() {
     if(this->v_oldBuildData.isNull() == true) {
         return;
@@ -62,6 +66,10 @@ void BuildDataWidget::updateOldData() {
 
 QString BuildDataWidget::buildName() {
     return this->v_buildNameE->text();
+}
+
+QString BuildDataWidget::debugPath() {
+    return this->v_debugPathE->toPlainText();
 }
 
 void BuildDataWidget::clear(bool onlyText) {

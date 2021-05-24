@@ -45,6 +45,10 @@ public:
      * \param buildName - The build name
     */
     void setBuildName(QString buildName);
+    /*! Sets the debug path
+     * \param debugPath
+    */
+    void setDebugPath(QString debugPath);
 
     /*! Updates the old data with the new data */
     void updateOldData();
@@ -53,6 +57,10 @@ public:
      * \returns QString
     */
     QString buildName();
+    /*! Returns the debug path
+     * \returns QString
+    */
+    QString debugPath();
 
     /*! Clears all the data
      * \param onlyText - If only the text should be cleared
