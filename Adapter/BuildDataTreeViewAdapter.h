@@ -22,5 +22,12 @@ public:
     /*! Constructor */
     BuildDataTreeViewAdapter();
 
+private:
+    /*! Generates the columns the view needs
+     * \param l - Column item list
+     * \param data - The data to turn into columns
+    */
+    void generateColumns(QList<QStandardItem*>& l, QList<QVariant> data) override;
+
 };
 #endif // BUILDDATATREEVIEWADAPTER_H
