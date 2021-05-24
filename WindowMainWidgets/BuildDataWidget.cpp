@@ -96,6 +96,12 @@ QPushButton* BuildDataWidget::releasePathButton() {
     return this->v_releasePathB;
 }
 
+void BuildDataWidget::hideResetButtons(bool hide) {
+    this->v_resetBuildNameB->setHidden(hide);
+    this->v_resetDebugPathB->setHidden(hide);
+    this->v_resetReleasePathB->setHidden(hide);
+}
+
 void BuildDataWidget::clear(bool onlyText) {
     this->v_buildNameE->setText("");
     this->v_debugPathE->setText("");

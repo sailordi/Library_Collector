@@ -88,6 +88,11 @@ public:
     */
     QPushButton* releasePathButton();
 
+    /*! Hides/shows the reset buttons
+     * \param hide - If the buttuns should be hidden
+    */
+    void hideResetButtons(bool hide);
+
     /*! Clears all the data
      * \param onlyText - If only the text should be cleared
     */
