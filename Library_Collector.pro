@@ -52,6 +52,7 @@ SOURCES += main.cpp \
     Data/Collector.cpp \
     MessageHandler.cpp \
     WindowMain.cpp \
+    WindowMainWidgets/BuildDataViewWidget.cpp \
     WindowMainWidgets/BuildDataWidget.cpp \
     WindowMainWidgets/MainInfoWidget.cpp
 
@@ -65,6 +66,7 @@ HEADERS += \
     Data/Collector.h \
     MessageHandler.h \
     WindowMain.h \
+    WindowMainWidgets/BuildDataViewWidget.h \
     WindowMainWidgets/BuildDataWidget.h \
     WindowMainWidgets/MainInfoWidget.h
 
