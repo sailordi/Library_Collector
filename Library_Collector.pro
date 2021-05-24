@@ -44,6 +44,7 @@ win32:CONFIG(release, debug|release): LIBS += -L$${LIBRARIES_PATH} -lMessage
 else:win32:CONFIG(debug, debug|release): LIBS += -L$${LIBRARIES_PATH} -lMessage_D
 
 SOURCES += main.cpp \
+    Adapter/BuildDataTreeViewAdapter.cpp \
     Adapter/NoticeAdapter.cpp \
     Adapter/PathItemCreator.cpp \
     Adapter/TextWrapDelegate.cpp \
@@ -55,6 +56,7 @@ SOURCES += main.cpp \
     WindowMainWidgets/MainInfoWidget.cpp
 
 HEADERS += \
+    Adapter/BuildDataTreeViewAdapter.h \
     Adapter/NoticeAdapter.h \
     Adapter/PathItemCreator.h \
     Adapter/TextWrapDelegate.h \
