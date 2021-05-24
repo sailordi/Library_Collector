@@ -60,6 +60,9 @@ public:
     */
     QList<int> selectedRowsPosition();
 
+    /*! Clears the build data list */
+    void clear();
+
 private:
     QLabel* v_buildInfoL = nullptr;
 

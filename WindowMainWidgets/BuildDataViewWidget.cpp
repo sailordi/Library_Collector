@@ -52,6 +52,10 @@ QList<int> BuildDataViewWidget::selectedRowsPosition() {
     return this->v_view->selectedRowsPosition();
 }
 
+void BuildDataViewWidget::clear() {
+    this->v_buildDataList.clear();
+}
+
 //Private functions
 void BuildDataViewWidget::init() {
     this->v_buildInfoL = new QLabel("Build info [0]",this->v_p);
