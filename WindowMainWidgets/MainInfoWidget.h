@@ -36,11 +36,19 @@ public:
      * \param outputPath - The outputh path
     */
     void setOutputPath(QString outputPath);
+    /*! Sets the header path
+     * \param headerPath - The header path
+    */
+    void setHeaderPath(QString headerPath);
 
     /*! Returns the output path
      * \returns QString
     */
     QString outputPath();
+    /*! Returns the header path
+     * \returns QString
+    */
+    QString headerPath();
 
 private:
     QTextEdit* v_outputPathE = nullptr,*v_headerPathE = nullptr;

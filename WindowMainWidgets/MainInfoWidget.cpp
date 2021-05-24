@@ -21,8 +21,16 @@ void MainInfoWidget::setOutputPath(QString outputPath) {
     this->v_outputPathE->setText(outputPath);
 }
 
+void MainInfoWidget::setHeaderPath(QString headerPath) {
+    this->v_headerPathE->setText(headerPath);
+}
+
 QString MainInfoWidget::outputPath() {
     return this->v_outputPathE->toPlainText();
+}
+
+QString MainInfoWidget::headerPath() {
+    return this->v_headerPathE->toPlainText();
 }
 
 //Private functions
