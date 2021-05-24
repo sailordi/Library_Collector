@@ -22,5 +22,12 @@ public:
     /*! Constructor */
     PathItemCreator();
 
+    /*! Creates a non editable standard item
+     * \param data - The data for the column
+     * \param aligment - The text aligment
+     * \returns QStandardItem*
+    */
+    QStandardItem* nonEditable(QVariant data, Qt::AlignmentFlag aligment) override;
+
 };
 #endif // PATHITEMCREATOR_H
