@@ -40,6 +40,10 @@ public:
      * \param headerPath - The header path
     */
     void setHeaderPath(QString headerPath);
+    /*! Sets the library base name
+     * \param libraryBaseName - The library base name
+    */
+    void setLibraryBaseName(QString libraryBaseName);
 
     /*! Returns the output path
      * \returns QString
@@ -49,6 +53,10 @@ public:
      * \returns QString
     */
     QString headerPath();
+    /*! Returns the library base name
+     * \returns QString
+    */
+    QString libraryBaseName();
 
 private:
     QTextEdit* v_outputPathE = nullptr,*v_headerPathE = nullptr;

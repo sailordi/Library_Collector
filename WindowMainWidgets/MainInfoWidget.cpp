@@ -25,12 +25,20 @@ void MainInfoWidget::setHeaderPath(QString headerPath) {
     this->v_headerPathE->setText(headerPath);
 }
 
+void MainInfoWidget::setLibraryBaseName(QString libraryBaseName) {
+    this->v_libraryBaseNameE->setText(libraryBaseName);
+}
+
 QString MainInfoWidget::outputPath() {
     return this->v_outputPathE->toPlainText();
 }
 
 QString MainInfoWidget::headerPath() {
     return this->v_headerPathE->toPlainText();
+}
+
+QString MainInfoWidget::libraryBaseName() {
+    return this->v_libraryBaseNameE->text();
 }
 
 //Private functions
