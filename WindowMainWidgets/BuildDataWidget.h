@@ -49,6 +49,10 @@ public:
      * \param debugPath
     */
     void setDebugPath(QString debugPath);
+    /*! Sets the release path
+     * \param releasePath
+    */
+    void setReleasePath(QString releasePath);
 
     /*! Updates the old data with the new data */
     void updateOldData();
@@ -61,6 +65,10 @@ public:
      * \returns QString
     */
     QString debugPath();
+    /*! Returns the release path
+     * \returns QString
+    */
+    QString releasePath();
 
     /*! Clears all the data
      * \param onlyText - If only the text should be cleared
