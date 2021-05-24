@@ -41,6 +41,14 @@ QString MainInfoWidget::libraryBaseName() {
     return this->v_libraryBaseNameE->text();
 }
 
+QPushButton* MainInfoWidget::outputPathButton() {
+    return this->v_outputPathB;
+}
+
+QPushButton* MainInfoWidget::headerPathButton() {
+    return this->v_headerPathB;
+}
+
 //Private functions
 void MainInfoWidget::init() {
     QLabel* outputPathL = new QLabel("Library output path",this->v_p);

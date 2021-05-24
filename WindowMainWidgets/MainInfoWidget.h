@@ -58,6 +58,15 @@ public:
     */
     QString libraryBaseName();
 
+    /*! Returns the output path selection button
+     * \returns QPushButton*
+    */
+    QPushButton* outputPathButton();
+    /*! Returns the header path selection button
+     * \returns QPushButton*
+    */
+    QPushButton* headerPathButton();
+
 private:
     QTextEdit* v_outputPathE = nullptr,*v_headerPathE = nullptr;
     QLineEdit* v_libraryBaseNameE = nullptr;
