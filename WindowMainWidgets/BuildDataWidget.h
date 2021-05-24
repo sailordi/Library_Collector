@@ -36,6 +36,11 @@ public:
     */
     explicit BuildDataWidget(QGridLayout* l,QWidget *parent = nullptr);
 
+    /*! Clears all the data
+     * \param onlyText - If only the text should be cleared
+    */
+    void clear(bool onlyText);
+
 private:
     QLineEdit* v_buildNameE = nullptr;
     QTextEdit* v_debugPathE = nullptr,*v_releasePathE = nullptr;
