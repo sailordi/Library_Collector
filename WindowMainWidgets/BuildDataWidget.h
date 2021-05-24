@@ -45,5 +45,8 @@ private:
     int v_oldDataPosition = -1;
     BuildDataP v_oldBuildData;
 
+    /*! Initializes widgets that are used */
+    void init();
+
 };
 #endif // BUILDDATAWIDGET_H
