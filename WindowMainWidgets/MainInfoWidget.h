@@ -32,6 +32,16 @@ public:
     */
     MainInfoWidget(QGridLayout* l,QWidget* parent = nullptr);
 
+    /*! Sets the output path
+     * \param outputPath - The outputh path
+    */
+    void setOutputPath(QString outputPath);
+
+    /*! Returns the output path
+     * \returns QString
+    */
+    QString outputPath();
+
 private:
     QTextEdit* v_outputPathE = nullptr,*v_headerPathE = nullptr;
     QLineEdit* v_libraryBaseNameE = nullptr;

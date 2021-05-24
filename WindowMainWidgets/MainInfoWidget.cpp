@@ -17,6 +17,14 @@ MainInfoWidget::MainInfoWidget(QGridLayout* l,QWidget* parent) : SingleLayoutWid
     this->init();
 }
 
+void MainInfoWidget::setOutputPath(QString outputPath) {
+    this->v_outputPathE->setText(outputPath);
+}
+
+QString MainInfoWidget::outputPath() {
+    return this->v_outputPathE->toPlainText();
+}
+
 //Private functions
 void MainInfoWidget::init() {
     QLabel* outputPathL = new QLabel("Library output path",this->v_p);
