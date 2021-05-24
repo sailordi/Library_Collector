@@ -28,6 +28,20 @@ public:
     */
     TextWrapDelegate(int extraWidth,int extraHeight,int role,QWidget *parent = nullptr);
 
+    /*! Function to paint the delegate
+     * \param painter - The painter to be used
+     * \param option - The option that is used
+     * \param index - The item index
+    */
+    void paint(QPainter* painter,const QStyleOptionViewItem& option,const QModelIndex& index) const override;
+
+    /*! Returns the size the item should have
+     * \param option - The option that is used
+     * \param index - The item index
+     * \returns QSize
+    */
+    QSize sizeHint(const QStyleOptionViewItem& option,const QModelIndex& index) const override;
+
 private:
     int v_extraWidth = 0,v_extraHeight = 0,v_role = Qt::DisplayRole;
 
