@@ -36,6 +36,15 @@ public:
     */
     explicit BuildDataWidget(QGridLayout* l,QWidget *parent = nullptr);
 
+    /*! Sets the old data
+     * \param oldDataPosition - The old datas position in the data list
+     * \param data - The pointer to the data
+    */
+    void setOldData(int oldDataPosition,BuildDataP data);
+
+    /*! Updates the old data with the new data */
+    void updateOldData();
+
     /*! Clears all the data
      * \param onlyText - If only the text should be cleared
     */
