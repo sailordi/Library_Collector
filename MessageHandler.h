@@ -29,6 +29,11 @@ namespace MessageHandler {
      * \throws QPair<Notice*,NoticeFlag>
     */
     void errorAddBuldData(QList<BuildDataP> l,QString libraryBaseName,BuildDataP nD);
+    /*! Returns a message for build data being added
+     *  \param d - The build data
+     * \returns Notice*
+    */
+    Notice* addBuildData(BuildDataP d);
 
     /*! Checks if collection can be done
      * \param outP - The output path

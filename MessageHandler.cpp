@@ -68,6 +68,30 @@ void MessageHandler::errorAddBuldData(QList<BuildDataP> l, QString libraryBaseNa
 
 }
 
+Notice* MessageHandler::addBuildData(BuildDataP d) {
+    QString str = "";
+
+        str.append("Build name: "+d->buildName()+Helper::newRow(2) );
+
+        if(d->debugPath().isEmpty() == false) {
+            str.append("Debug path: "+Helper::newRow()+d->debugPath()+Helper::newRow() );
+        }
+        else {
+            str.append("Debug path is empty"+Helper::newRow() );
+        }
+
+        if(d->releasePath().isEmpty() == false) {
+            str.append("Release path: "+Helper::newRow()+d->releasePath()+Helper::newRow(2) );
+        }
+        else {
+            str.append("Release path is empty"+Helper::newRow(2) );
+        }
+
+        str.append("Was added to build data list"+Helper::newRow() );
+
+        return new Notice(str);
+}
+
 void MessageHandler::collectionCheck(QString outP,QString outN,QString headerP,QString releaseP,QString debugP) {
     QString tmp = "";
 
