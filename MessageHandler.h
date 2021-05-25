@@ -35,6 +35,16 @@ namespace MessageHandler {
     */
     Notice* addBuildData(BuildDataP d);
 
+    /*! Checks if build data can be updated
+     * \param l - List with build data
+     * \param libraryBaseName - The library base name
+     * \param oldDataPos - The old data position in the data list
+     * \param oD - The old build data
+     * \param nD - The updated build data to check
+     * \throws QPair<Notice*,NoticeFlag>
+    */
+    void errorUpdateBuildData(QList<BuildDataP> l,QString libraryBaseName,int oldDataPos,BuildDataP oD,BuildDataP nD);
+
     /*! Checks if collection can be done
      * \param outP - The output path
      * \param outN - The output name
