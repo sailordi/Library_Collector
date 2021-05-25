@@ -240,6 +240,26 @@ Notice* MessageHandler::removeBuildData(BuildDataP d) {
         return new Notice(str);
 }
 
+void MessageHandler::errorSelection(int size,int selected,bool update) {
+    QString str;
+
+        if(size < 0) {
+            str = "No build data in list"+Helper::newRow();
+        }
+
+        if(str.isEmpty() == true && selected <= 0) {
+            str = "No build data has been selected"+Helper::newRow();
+        }
+        if(str.isEmpty() == true && selected > 1 && update == true) {
+            str = "Multiple build data entries has been selected"+Helper::newRow();
+        }
+
+        if(str.isEmpty() == false) {
+            throw NoticePair(new Notice(str),NoticeFlag::ERROR);
+        }
+
+}
+
 void MessageHandler::collectionCheck(QString outP,QString outN,QString headerP,QString releaseP,QString debugP) {
     QString tmp = "";
 
