@@ -73,6 +73,14 @@ namespace MessageHandler {
      * \throws QPair<Notice*,NoticeFlag>
     */
     void errorCanPreformeCollection(QString outputP,QString libraryBaseName,QString headerP,int builds);
+    /*! Checks if the collection was preformed without anny errors/warnings
+     * \param outputP - The output path
+     * \param libraryBaseName - The library base name
+     * \param headerP - The header path
+     * \param data - The build data
+     * \throws QPair<Notice*,NoticeFlag>
+    */
+    void errorCollectionPreformed(QString outputP,QString libraryBaseName,QString hederP,BuildDataP data);
 
     /*! Collection is done
      * \returns Notice*

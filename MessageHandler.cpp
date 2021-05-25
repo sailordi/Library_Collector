@@ -291,6 +291,65 @@ void MessageHandler::errorCanPreformeCollection(QString outputP,QString libraryB
 
 }
 
+void MessageHandler::errorCollectionPreformed(QString outputP,QString libraryBaseName,QString hederP,BuildDataP data) {
+    QString str = "";
+    bool r = true,d = true;
+
+        if(data->debugPath().isEmpty() == false && QDir(data->debugPath() ).exists() == false) {
+            d = false;
+        }
+        if(data->releasePath().isEmpty() == false && QDir(data->releasePath() ).exists() == false) {
+            r = false;
+        }
+
+        if(r == true && d == true) {
+            return;
+        }
+
+        if(r == false && d == false) {
+            str.append("The collection could not be done both debug path and release path could no longer be found"+Helper::newRow(2) );
+        }
+        else if(r == false && data->debugPath().isEmpty() == true) {
+            str.append("The collection could not be done debug path was empty and release path could no longer be found"+Helper::newRow(2) );
+        }
+        else if(r == false && data->debugPath().isEmpty() == false) {
+            str.append("The collection could not be compleatly preformed release path could no longer be found"+Helper::newRow(2) );
+        }
+        else if(d == false && data->releasePath().isEmpty() == true) {
+            str.append("The collection could not be done debug path could no longe be found and release path was empty"+Helper::newRow(2) );
+        }
+        else if(d == false && data->releasePath().isEmpty() == false) {
+            str.append("The collection could not be compleatly preformed debug path could no longer be found"+Helper::newRow(2) );
+        }
+
+        str.append("Library output path: "+outputP+Helper::newRow() );
+        str.append("Library base name: "+libraryBaseName+Helper::newRow(2) );
+        str.append("Headers path: "+Helper::newRow()+hederP+Helper::newRow(2) );
+
+        str.append("Build name: "+data->buildName()+Helper::newRow() );
+
+        if(data->debugPath().isEmpty() == false) {
+            str.append("Debug path: "+Helper::newRow()+data->debugPath()+Helper::newRow() );
+        }
+        if(data->releasePath().isEmpty() == false) {
+            str.append("Release path: "+Helper::newRow()+data->releasePath()+Helper::newRow() );
+        }
+
+        if(r == false && d == false) {
+            throw QPair<Notice*,NoticeFlag>(new Notice(str),NoticeFlag::ERROR);
+        }
+        else if(r == false && data->debugPath().isEmpty() == true) {
+            throw QPair<Notice*,NoticeFlag>(new Notice(str),NoticeFlag::ERROR);
+        }
+        else if(d == false && data->releasePath().isEmpty() == true) {
+            throw QPair<Notice*,NoticeFlag>(new Notice(str),NoticeFlag::ERROR);
+        }
+        else {
+            throw QPair<Notice*,NoticeFlag>(new Notice(str),NoticeFlag::WARNING);
+        }
+
+}
+
 Notice* MessageHandler::collection() {
     return new Notice("The collection has been performed");
 }
@@ -304,4 +363,3 @@ Notice* MessageHandler::saveLoadData(QString path,QString fileName,bool save) {
         return new Notice("Data has been loaded"+str);
 
 }
-
