@@ -8,18 +8,28 @@
 
 typedef QPair<Notice*,NoticeFlag> NoticePair;
 
+#include "Data/BuildDataTypedefs.h"
+
 /*!
  * \brief The namespace handle all of the messages
  *
- * Incudes: QPair ,Notice & NoticeFlag.h
+ * Incudes: BuildDataTypedefs.h, QPair ,Notice & NoticeFlag.h
  *
  * \author Created by: Sailordi
  * \author Last to touch it: Sailordi
  *
  * \date Created: 2021-05-21
- * \date Last update: 2021-05-21
+ * \date Last update: 2021-05-25
 */
 namespace MessageHandler {
+    /*! Checks if build data can be added
+     * \param l - List with build data
+     * \param libraryName - The library base name
+     * \param nD - The new buld data to ckeck
+     * \throws QPair<Notice*,NoticeFlag>
+    */
+    void errorAddBuldData(QList<BuildDataP> l,QString libraryBaseName,BuildDataP nD);
+
     /*! Checks if collection can be done
      * \param outP - The output path
      * \param outN - The output name
