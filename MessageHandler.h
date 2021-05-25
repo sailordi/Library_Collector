@@ -51,6 +51,12 @@ namespace MessageHandler {
     */
     Notice* updateBuildData(BuildDataP oD,BuildDataP nD);
 
+    /*! Returns a message for build data being removed
+     * \param d - The build data
+     * \returns Notice*
+    */
+    Notice* removeBuildData(BuildDataP d);
+
     /*! Checks if collection can be done
      * \param outP - The output path
      * \param outN - The output name
