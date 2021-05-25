@@ -30,7 +30,7 @@ namespace MessageHandler {
     */
     void errorAddBuldData(QList<BuildDataP> l,QString libraryBaseName,BuildDataP nD);
     /*! Returns a message for build data being added
-     *  \param d - The build data
+     * \param d - The build data
      * \returns Notice*
     */
     Notice* addBuildData(BuildDataP d);
@@ -44,6 +44,12 @@ namespace MessageHandler {
      * \throws QPair<Notice*,NoticeFlag>
     */
     void errorUpdateBuildData(QList<BuildDataP> l,QString libraryBaseName,int oldDataPos,BuildDataP oD,BuildDataP nD);
+    /*! Returns a message for build data being updated
+     * \param oD - The old build data
+     * \param nD - The new build data
+     * \returns Notice*
+    */
+    Notice* updateBuildData(BuildDataP oD,BuildDataP nD);
 
     /*! Checks if collection can be done
      * \param outP - The output path
