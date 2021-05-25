@@ -65,15 +65,14 @@ namespace MessageHandler {
     */
     void errorSelection(int size,int selected,bool update);
 
-    /*! Checks if collection can be done
-     * \param outP - The output path
-     * \param outN - The output name
+    /*! Checks if collection can be preformed
+     * \param outpuPt - The output path
+     * \param libraryBaseName - The library base name
      * \param headerP - The header path
-     * \param releseP - The relese path
-     * \param debugP - The debug path
+     * \param builds - The build data list size
      * \throws QPair<Notice*,NoticeFlag>
     */
-    void collectionCheck(QString outP,QString outN,QString headerP,QString releaseP,QString debugP);
+    void errorCanPreformeCollection(QString outputP,QString libraryBaseName,QString headerP,int builds);
 
     /*! Collection is done
      * \returns Notice*
