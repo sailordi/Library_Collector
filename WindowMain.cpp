@@ -7,26 +7,28 @@
 
 #include "MessageHandler.h"
 #include "Adapter/NoticeAdapter.h"
+#include "Data/BuildData.h"
 #include "Data/Collector.h"
-#include "WindowMainWidgets/LibraryDataWidget.h"
+#include "WindowMainWidgets/BuildDataViewWidget.h"
+#include "WindowMainWidgets/BuildDataWidget.h"
+#include "WindowMainWidgets/MainInfoWidget.h"
 
 //Public functions
 WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::WindowMain) {
     this->v_ui->setupUi(this);
 
-    this->v_outDataW = new LibraryDataWidget(this->v_ui->libraryOut_layout,"Library output",true);
-    this->v_headerDataW = new LibraryDataWidget(this->v_ui->libraryHeader_layout,"Library headers",false);
-    this->v_releaseDataW = new LibraryDataWidget(this->v_ui->libraryRelease_layout,"Library release",false);
-    this->v_debugDataW = new LibraryDataWidget(this->v_ui->libraryDebug_layout,"Library debug",false);
-
     this->v_noticeA = new NoticeAdapter(this);
 
-    connect(this->v_outDataW->selectPathBtn(),&QPushButton::clicked,this,&WindowMain::libraryOutPathBtnClicked);
+    this->v_mainInfoW = new MainInfoWidget(this->v_ui->mainInfo_layout);
+    this->v_buildDataViewW = new BuildDataViewWidget(this->v_ui->buildView_layout);
+    this->v_buildDataW = new BuildDataWidget(this->v_ui->buildInfo_layout);
 
-    connect(this->v_headerDataW->selectPathBtn(),&QPushButton::clicked,this,&WindowMain::libraryHeaderPathBtnClicked);
+    connect(this->v_mainInfoW->outputPathButton(),&QPushButton::clicked,this,&WindowMain::libraryOutPathBtnClicked);
 
-    connect(this->v_debugDataW->selectPathBtn(),&QPushButton::clicked,this,&WindowMain::libraryDebugPathBtnClicked);
-    connect(this->v_releaseDataW->selectPathBtn(),&QPushButton::clicked,this,&WindowMain::libraryReleasePathBtnClicked);
+    connect(this->v_mainInfoW->headerPathButton(),&QPushButton::clicked,this,&WindowMain::libraryHeaderPathBtnClicked);
+
+    connect(this->v_buildDataW->releasePathButton(),&QPushButton::clicked,this,&WindowMain::libraryReleasePathBtnClicked);
+    connect(this->v_buildDataW->debugPathButton(),&QPushButton::clicked,this,&WindowMain::libraryDebugPathBtnClicked);
 
     connect(this->v_ui->preformCollection_btn,&QPushButton::clicked,this,&WindowMain::preformCollectionBtnClicked);
 
@@ -41,10 +43,9 @@ WindowMain::~WindowMain() {
 
     delete this->v_noticeA;
 
-    delete this->v_outDataW;
-    delete this->v_headerDataW;
-    delete this->v_releaseDataW;
-    delete this->v_debugDataW;
+    delete this->v_buildDataW;
+    delete this->v_buildDataViewW;
+    delete this->v_mainInfoW;
 
     delete this->v_ui;
 }
@@ -57,7 +58,7 @@ void WindowMain::libraryOutPathBtnClicked() {
             return;
         }
 
-        this->v_outDataW->setPath(str);
+        this->v_mainInfoW->setOutputPath(str);
 }
 
 void WindowMain::libraryHeaderPathBtnClicked() {
@@ -67,7 +68,7 @@ void WindowMain::libraryHeaderPathBtnClicked() {
             return;
         }
 
-        this->v_headerDataW->setPath(str);
+        this->v_mainInfoW->setHeaderPath(str);
 }
 
 void WindowMain::libraryDebugPathBtnClicked() {
@@ -77,7 +78,7 @@ void WindowMain::libraryDebugPathBtnClicked() {
             return;
         }
 
-        this->v_debugDataW->setPath(str);
+        this->v_buildDataW->setDebugPath(str);
 }
 
 void WindowMain::libraryReleasePathBtnClicked() {
@@ -87,60 +88,73 @@ void WindowMain::libraryReleasePathBtnClicked() {
             return;
         }
 
-        this->v_releaseDataW->setPath(str);
+        this->v_buildDataW->setReleasePath(str);
 }
 
 void WindowMain::preformCollectionBtnClicked() {
-    QString outP = this->v_outDataW->path(), outN = this->v_outDataW->name();
-    QString hP = this->v_headerDataW->path(), dP = this->v_debugDataW->path(), rP = this->v_releaseDataW->path();
+    QString outP = this->v_mainInfoW->outputPath();
+       QString libraryBaseName = this->v_mainInfoW->libraryBaseName();
+       QString headerP = this->v_mainInfoW->headerPath();
+       QList<BuildDataP> l = this->v_buildDataViewW->buildDataList();
 
-        this->v_noticeA->reset("Preform collection");
+           this->v_noticeA->reset("Preform collection");
 
-        try {
-            MessageHandler::collectionCheck(outP,outN,hP,rP,dP);
-        }catch(NoticePair p) {
-            this->v_noticeA->add(p.first,p.second);
+           try {
+               MessageHandler::errorCanPreformeCollection(outP,libraryBaseName,headerP,l.size() );
+           }catch(QPair<Notice*,NoticeFlag> p) {
+               this->v_noticeA->add(p.first,p.second);
+               this->v_noticeA->show();
+               return;
+           }
 
-            if(p.second == NoticeFlag::ERROR) {
-                this->v_noticeA->show();
-                return;
-            }
+           for(int i = 0; i < l.size(); i++) {
+               BuildDataP b = this->v_buildDataViewW->buildDataList().at(i);
+               bool w = false;
 
-        }
+               try {
+                   MessageHandler::errorCollectionPreformed(outP,libraryBaseName,headerP,b);
+               }catch(QPair<Notice*,NoticeFlag> p) {
+                   this->v_noticeA->add(p.first,p.second);
 
-        QString outPut = Collector::formatOutPath(outP,outN);
-        QString in = Collector::formatOutPath(outPut,"includes");
-        QString lib = Collector::formatOutPath(outPut,"libs");
+                   if(p.second == NoticeFlag::ERROR) {
+                       continue;
+                   }
+                   else {
+                       w = true;
+                   }
+               }
+               QString destP  = Collector::formatOutPath(outP,libraryBaseName+b->buildName() );
+               QString in = Collector::formatOutPath(destP,"includes");
+               QString lib = Collector::formatOutPath(destP,"libs");
 
-        Collector::createPath(outPut);
-        Collector::createPath(in);
-        Collector::createPath(lib);
+               Collector::createPath(destP);
+               Collector::createPath(in);
+               Collector::createPath(lib);
 
-        Collector hR(hP+"/",in,{"h"},true);
-        Collector bD(dP+"/",lib,{"a","dll","lib","pdb"},false);
-        Collector bR(rP+"/",lib,{"a","dll","lib","pdb"},false);
+               Collector cH(headerP+"/",in,{"h"},true);
+               Collector cD(b->debugPath()+"/",lib,{"a","dll","lib","pdb"},false);
+               Collector cR(b->releasePath()+"/",lib,{"a","dll","lib","pdb"},false);
 
-        if(hR.canCollect() == false) {
-            return;
-        }
+               cH.collect();
 
-        hR.collect();
+               if(cD.canCollect() == true) {
+                   cD.collect();
+               }
+               if(cR.canCollect() == true) {
+                   cR.collect();
+               }
 
-        if(bD.canCollect() == true) {
-            bD.collect();
-        }
+               if(w == false) {
+                   this->v_noticeA->add(MessageHandler::collection(outP,libraryBaseName,headerP,b),NoticeFlag::MESSAGE);
+               }
 
-        if(bR.canCollect() == true) {
-            bR.collect();
-        }
-        this->v_noticeA->add(MessageHandler::collection(),NoticeFlag::MESSAGE);
+           }
 
-        this->v_noticeA->show();
-
+           this->v_noticeA->show();
 }
 
 void WindowMain::saveProgramData() {
-    QString str = QFileDialog::getSaveFileName(nullptr,"Save Library collect..",QString(),"Library collector Data(*.LibColData)");
+    QString str = QFileDialog::getSaveFileName(nullptr,"Save Library collect..",QString(),"Library collector Data(*.LibColDataV2)");
 
     if(str.isEmpty() == true) {
         return;
@@ -148,24 +162,30 @@ void WindowMain::saveProgramData() {
 
     this->v_noticeA->reset("Library collector data saved");
 
-    Settings s(str);
+    Settings* s = new Settings(str);
 
-    s.startGroup("OutputData");
-    s.addBlockData("Path",this->v_outDataW->path() );
-    s.addBlockData("Name",this->v_outDataW->name() );
-    s.endGroup();
+    s->startGroup("Data");
 
-    s.startGroup("HeaderData");
-    s.addBlockData("Path",this->v_headerDataW->path() );
-    s.endGroup();
+    s->addBlockData("OutputPath",this->v_mainInfoW->outputPath() );
+    s->addBlockData("LibraryBaseName",this->v_mainInfoW->libraryBaseName() );
+    s->addBlockData("HeaderPath",this->v_mainInfoW->headerPath() );
 
-    s.startGroup("ReleaseData");
-    s.addBlockData("Path",this->v_releaseDataW->path() );
-    s.endGroup();
+    QList<BuildDataP> l = this->v_buildDataViewW->buildDataList();
+    s->startArray("Builds");
+    s->clearArray(false);
 
-    s.startGroup("DebugData");
-    s.addBlockData("Path",this->v_debugDataW->path() );
-    s.endGroup();
+    for(int i = 0; i < l.size(); i++) {
+        BuildDataP b = l.at(i);
+        QList<QString> k = {"BuildName","DebugPath","RelesePath"};
+        QList<QVariant> v = {b->buildName(),b->debugPath(),b->releasePath()};
+
+        s->addArrayData(k,v);
+    }
+
+    s->endArray();
+    s->endGroup();
+
+    delete s;
 
     QFileInfo f(str);
 
@@ -174,7 +194,7 @@ void WindowMain::saveProgramData() {
 }
 
 void WindowMain::loadProgramData() {
-    QString str = QFileDialog::getOpenFileName(nullptr,"Load Library collect..",QString(),"Library collector Data(*.LibColData)");
+    QString str = QFileDialog::getOpenFileName(nullptr,"Load Library collect..",QString(),"Library collector Data(*.LibColDataV2)");
 
     if(str.isEmpty() == true) {
         return;
@@ -182,24 +202,42 @@ void WindowMain::loadProgramData() {
 
     this->v_noticeA->reset("Library collector data loaded");
 
-    Settings s(str);
+    Settings* s = new Settings(str,false);
 
-    s.startGroup("OutputData");
-    this->v_outDataW->setPath(s.getBlockData("Path","").toString() );
-    this->v_outDataW->setName(s.getBlockData("Name","").toString() );
-    s.endGroup();
+    s->startGroup("Data");
 
-    s.startGroup("HeaderData");
-    this->v_headerDataW->setPath(s.getBlockData("Path","").toString() );
-    s.endGroup();
+    this->v_mainInfoW->setOutputPath(s->getBlockData("OutputPath","").toString() );
+    this->v_mainInfoW->setLibraryBaseName(s->getBlockData("LibraryBaseName","").toString() );
+    this->v_mainInfoW->setHeaderPath(s->getBlockData("HeaderPath","").toString() );
 
-    s.startGroup("ReleaseData");
-    this->v_releaseDataW->setPath(s.getBlockData("Path","").toString() );
-    s.endGroup();
+    s->startArray("Builds");
+    this->v_buildDataW->clear(false);
+    this->v_buildDataViewW->clear();
+    QList<BuildDataP>* l = this->v_buildDataViewW->buildDataListP();
 
-    s.startGroup("DebugData");
-    this->v_debugDataW->setPath(s.getBlockData("Path","").toString() );
-    s.endGroup();
+    int size = 0;
+
+    try {
+        size = s->arraySize();
+    } catch (QString e) {
+        //The array did not exist / other error occured
+        size = 0;
+    }
+
+    for(int i = 0; i < size; i++) {
+        QList<QString> k = {"BuildName","DebugPath","RelesePath"};
+        QList<QVariant> v = {"","",""};
+        QList<QVariant> d = s->getArrayData(i,k,v);
+
+        l->push_back(BuildDataP(new BuildData({d.at(0).toString(),d.at(1).toString(),d.at(2).toString()}) ) );
+    }
+
+    s->endArray();
+    s->endGroup();
+
+    delete s;
+
+    this->v_buildDataViewW->update();
 
     QFileInfo f(str);
 

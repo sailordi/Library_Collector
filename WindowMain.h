@@ -7,7 +7,9 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class WindowMain; }
 QT_END_NAMESPACE
 
-class LibraryDataWidget;
+class BuildDataViewWidget;
+class BuildDataWidget;
+class MainInfoWidget;
 class NoticeAdapter;
 
 /*! \class WindowMain
@@ -17,13 +19,13 @@ class NoticeAdapter;
  *
  * Inherits: QMainWindow
  *
- * Forward declarations: LibraryDataWidget & NoticeAdapter
+ * Forward declarations: BuildDataViewWidget, BuildDataWidget, MainInfoWidget & NoticeAdapter
  *
  * \author Created by: Sailordi
  * \author Last to touch it: Sailordi
  *
  * \date Created: 2021-05-20
- * \date Last update: 2021-05-21
+ * \date Last update: 2021-05-26
 */
 class WindowMain : public QMainWindow
 {
@@ -59,8 +61,9 @@ private slots:
 private:
     Ui::WindowMain* v_ui = nullptr;
 
-    LibraryDataWidget* v_outDataW = nullptr,*v_headerDataW = nullptr;
-    LibraryDataWidget* v_debugDataW = nullptr,*v_releaseDataW = nullptr;
+    MainInfoWidget* v_mainInfoW = nullptr;
+    BuildDataViewWidget* v_buildDataViewW = nullptr;
+    BuildDataWidget* v_buildDataW = nullptr;
 
     NoticeAdapter* v_noticeA = nullptr;
 
