@@ -6,11 +6,12 @@
 #include <QStringList>
 
 #include "Adapter/TextWrapDelegate.h"
+#include "Adapter/PathItemCreator.h"
 
 //Public functions
 BuildDataTreeViewAdapter::BuildDataTreeViewAdapter() : TreeViewAdapterNoChildRows(new QTreeView(),true) {
     this->setHeaders({Qt::AlignCenter,Qt::AlignCenter,Qt::AlignCenter},
-                        {"Build name","Debug path","Release path"});
+                     {"Build name","Debug path","Release path"} );
 
     this->v_view->header()->setSectionResizeMode(QHeaderView::Interactive);
 
