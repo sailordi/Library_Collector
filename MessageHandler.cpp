@@ -350,8 +350,30 @@ void MessageHandler::errorCollectionPreformed(QString outputP,QString libraryBas
 
 }
 
-Notice* MessageHandler::collection() {
-    return new Notice("The collection has been performed");
+Notice* MessageHandler::collection(QString outputP,QString libraryBaseName,QString hederP,BuildDataP data) {
+    QString str = "";
+
+        str.append("Library headers and library files has been collected"+Helper::newRow() );
+        str.append("Library output path: "+outputP+Helper::newRow() );
+        str.append("Library base name: "+libraryBaseName+Helper::newRow(2) );
+        str.append("Headers path: "+Helper::newRow()+hederP+Helper::newRow(2) );
+
+        str.append("Build name: "+data->buildName()+Helper::newRow() );
+        if(data->debugPath().isEmpty() == false) {
+            str.append("Debug path: "+Helper::newRow()+data->debugPath()+Helper::newRow() );
+        }
+        else {
+            str.append("Debug path is empty"+Helper::newRow() );
+        }
+
+        if(data->releasePath().isEmpty() == false) {
+            str.append("Release path: "+Helper::newRow()+data->releasePath()+Helper::newRow() );
+        }
+        else {
+            str.append("Release path is empty"+Helper::newRow() );
+        }
+
+        return new Notice(str);
 }
 
 Notice* MessageHandler::saveLoadData(QString path,QString fileName,bool save) {

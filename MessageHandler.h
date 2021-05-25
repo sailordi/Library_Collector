@@ -83,9 +83,13 @@ namespace MessageHandler {
     void errorCollectionPreformed(QString outputP,QString libraryBaseName,QString hederP,BuildDataP data);
 
     /*! Collection is done
+     * \param outpuPt - The output path
+     * \param libraryBaseName - The library base name
+     * \param headerP - The header path
+     * \param data - The build data
      * \returns Notice*
     */
-    Notice* collection();
+    Notice* collection(QString outputP,QString libraryBaseName,QString hederP,BuildDataP data);
 
     /*! Data is saved / loaded
      * \param path - Path the data was saved to
