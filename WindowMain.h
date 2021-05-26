@@ -63,6 +63,9 @@ private slots:
     /*! Slot that is activated when the cancel update button is clicked */
     void cancelUpdateBtnClicked();
 
+    /*! Slot that is activated when update selected build data menu item is clicked */
+    void updateSelectedBuildData();
+
     /*! Slot that is activated when preform collection button is clicked */
     void preformCollectionBtnClicked();
 
