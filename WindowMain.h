@@ -58,6 +58,9 @@ private slots:
     /*! Slot that is activated when releas build path selection button is clicked */
     void libraryReleasePathBtnClicked();
 
+    /*! Stot that is activated when the add/update button is clicked */
+    void addUpdateBtnClicked();
+
     /*! Slot that is activated when preform collection button is clicked */
     void preformCollectionBtnClicked();
 
