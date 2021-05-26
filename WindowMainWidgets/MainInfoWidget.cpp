@@ -3,6 +3,8 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QGridLayout>
+#include <QTextBlockFormat>
+#include <QTextCursor>
 #include <QTextEdit>
 #include <QSpacerItem>
 #include <QPushButton>
@@ -19,10 +21,44 @@ MainInfoWidget::MainInfoWidget(QGridLayout* l,QWidget* parent) : SingleLayoutWid
 
 void MainInfoWidget::setOutputPath(QString outputPath) {
     this->v_outputPathE->setText(outputPath);
+
+    QTextCursor cu = this->v_outputPathE->textCursor();
+
+    cu.movePosition(QTextCursor::Start);
+
+    while(cu.atEnd() == false) {
+        QTextBlockFormat text = cu.blockFormat();
+
+        text.setAlignment(Qt::AlignCenter);
+        cu.mergeBlockFormat(text);
+
+        if(cu.movePosition(QTextCursor::NextBlock) == false) {
+            break;
+        }
+    }
+
+    this->v_outputPathE->setTextCursor(cu);
 }
 
 void MainInfoWidget::setHeaderPath(QString headerPath) {
     this->v_headerPathE->setText(headerPath);
+
+    QTextCursor cu = this->v_headerPathE->textCursor();
+
+    cu.movePosition(QTextCursor::Start);
+
+    while(cu.atEnd() == false) {
+        QTextBlockFormat text = cu.blockFormat();
+
+        text.setAlignment(Qt::AlignCenter);
+        cu.mergeBlockFormat(text);
+
+        if(cu.movePosition(QTextCursor::NextBlock) == false) {
+            break;
+        }
+    }
+
+    this->v_headerPathE->setTextCursor(cu);
 }
 
 void MainInfoWidget::setLibraryBaseName(QString libraryBaseName) {
@@ -71,6 +107,9 @@ void MainInfoWidget::init() {
 
     this->v_headerPathE->setMaximumHeight(MAX_EDIT_HEIGHT);
     this->v_headerPathE->setLineWrapMode(QTextEdit::WidgetWidth);
+
+    this->v_headerPathE->setReadOnly(true);
+    this->v_outputPathE->setReadOnly(true);
 
     this->v_libraryBaseNameE->setAlignment(Qt::AlignCenter);
 

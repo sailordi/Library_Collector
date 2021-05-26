@@ -24,7 +24,7 @@ class BuildData;
  * \author Last to touch it: Sailordi
  *
  * \date Created: 2021-05-24
- * \date Last update: 2021-05-24
+ * \date Last update: 2021-05-26
 */
 class BuildDataWidget : public MultiLayoutWidget
 {

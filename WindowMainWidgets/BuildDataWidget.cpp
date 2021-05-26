@@ -4,6 +4,8 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QGridLayout>
+#include <QTextBlockFormat>
+#include <QTextCursor>
 #include <QTextEdit>
 #include <QSpacerItem>
 #include <QPushButton>
@@ -31,9 +33,9 @@ void BuildDataWidget::setOldData(int oldDataPosition,BuildDataP data) {
     this->v_oldDataPosition = oldDataPosition;
     this->v_oldBuildData = data;
 
-    this->v_buildNameE->setText(data->buildName() );
-    this->v_debugPathE->setText(data->debugPath() );
-    this->v_releasePathE->setText(data->releasePath() );
+    this->setBuildName(data->buildName() );
+    this->setDebugPath(data->debugPath() );
+    this->setReleasePath(data->releasePath() );
 }
 
 void BuildDataWidget::setBuildName(QString buildName) {
@@ -42,10 +44,44 @@ void BuildDataWidget::setBuildName(QString buildName) {
 
 void BuildDataWidget::setDebugPath(QString debugPath) {
     this->v_debugPathE->setText(debugPath);
+
+    QTextCursor cu = this->v_debugPathE->textCursor();
+
+    cu.movePosition(QTextCursor::Start);
+
+    while(cu.atEnd() == false) {
+        QTextBlockFormat text = cu.blockFormat();
+
+        text.setAlignment(Qt::AlignCenter);
+        cu.mergeBlockFormat(text);
+
+        if(cu.movePosition(QTextCursor::NextBlock) == false) {
+            break;
+        }
+    }
+
+    this->v_debugPathE->setTextCursor(cu);
 }
 
 void BuildDataWidget::setReleasePath(QString releasePath) {
     this->v_releasePathE->setText(releasePath);
+
+    QTextCursor cu = this->v_releasePathE->textCursor();
+
+    cu.movePosition(QTextCursor::Start);
+
+    while(cu.atEnd() == false) {
+        QTextBlockFormat text = cu.blockFormat();
+
+        text.setAlignment(Qt::AlignCenter);
+        cu.mergeBlockFormat(text);
+
+        if(cu.movePosition(QTextCursor::NextBlock) == false) {
+            break;
+        }
+    }
+
+    this->v_releasePathE->setTextCursor(cu);
 }
 
 void BuildDataWidget::updateOldData() {
