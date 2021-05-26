@@ -162,6 +162,32 @@ void WindowMain::updateSelectedBuildData() {
 
 }
 
+void WindowMain::removeSelectedBuildData() {
+    int size = this->v_buildDataViewW->buildDataList().size(),selected = this->v_buildDataViewW->numberOfSelectedRows();
+
+        this->v_noticeA->reset("Remove build data");
+
+        try {
+            MessageHandler::errorSelection(size,selected,false);
+        }catch(NoticePair p) {
+            this->v_noticeA->add(p.first,p.second);
+            this->v_noticeA->show();
+            return;
+        }
+
+        QList<int> selectedNumbers = this->v_buildDataViewW->selectedRowsPosition();
+        QList<BuildDataP>* dataL = this->v_buildDataViewW->buildDataListP();
+
+        for(int i = selected -1; i >= 0; i--) {
+            BuildDataP d = dataL->takeAt(selectedNumbers.at(i) );
+
+            this->v_noticeA->add(MessageHandler::removeBuildData(d),NoticeFlag::MESSAGE);
+        }
+        this->v_buildDataViewW->update();
+
+        this->v_noticeA->show();
+}
+
 void WindowMain::preformCollectionBtnClicked() {
     QString outP = this->v_mainInfoW->outputPath();
        QString libraryBaseName = this->v_mainInfoW->libraryBaseName();

@@ -65,6 +65,8 @@ private slots:
 
     /*! Slot that is activated when update selected build data menu item is clicked */
     void updateSelectedBuildData();
+    /*! Slot that is activated when remove selected build data menu item is clicked */
+    void removeSelectedBuildData();
 
     /*! Slot that is activated when preform collection button is clicked */
     void preformCollectionBtnClicked();
