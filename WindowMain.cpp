@@ -284,6 +284,18 @@ void WindowMain::setTabsPalett() {
         this->v_ui->buildData_tab->setPalette(p);
 }
 
+void WindowMain::addData() {
+    BuildDataP d(new BuildData({this->v_buildDataW->buildName(),this->v_buildDataW->debugPath(),this->v_buildDataW->releasePath()}) );
+
+        this->v_noticeA->reset("Add build data");
+
+        MessageHandler::errorAddBuldData(this->v_buildDataViewW->buildDataList(),this->v_mainInfoW->libraryBaseName(),d);
+
+        this->v_buildDataViewW->buildDataListP()->push_back(d);
+
+        this->v_noticeA->add(MessageHandler::addBuildData(d),NoticeFlag::MESSAGE);
+}
+
 void WindowMain::saveWindowSettings() {
     Settings s("./Settings/LibraryColectorData.libColSet");
 

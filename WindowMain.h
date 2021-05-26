@@ -78,6 +78,9 @@ private:
     /*! Sets the all the tabs palett */
     void setTabsPalett();
 
+    /*! Adds data to the build data list */
+    void addData();
+
     /*! Saves the windows settings */
     void saveWindowSettings();
     /*! Loads the windows settings */
