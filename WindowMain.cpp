@@ -38,6 +38,8 @@ WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::Wind
     connect(this->v_ui->actionSaveData,&QAction::triggered,this,&WindowMain::saveProgramData);
     connect(this->v_ui->actionLoadData,&QAction::triggered,this,&WindowMain::loadProgramData);
 
+    this->prepareBuildDataTab();
+
     this->setTabsPalett();
     this->loadWindowSettings();
 }
