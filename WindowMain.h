@@ -80,6 +80,8 @@ private:
 
     /*! Adds data to the build data list */
     void addData();
+    /*! Updates the selected build data */
+    void updateData();
 
     /*! Saves the windows settings */
     void saveWindowSettings();
