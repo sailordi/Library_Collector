@@ -31,6 +31,7 @@ WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::Wind
     connect(this->v_buildDataW->debugPathButton(),&QPushButton::clicked,this,&WindowMain::libraryDebugPathBtnClicked);
 
     connect(this->v_ui->addUpdateBuildInfo_btn,&QPushButton::clicked,this,&WindowMain::addUpdateBtnClicked);
+    connect(this->v_ui->cancelBuildInfoUpdate_btn,&QPushButton::clicked,this,&WindowMain::cancelUpdateBtnClicked);
 
     connect(this->v_ui->preformCollection_btn,&QPushButton::clicked,this,&WindowMain::preformCollectionBtnClicked);
 
@@ -137,6 +138,10 @@ void WindowMain::addUpdateBtnClicked() {
     }
 
     this->v_noticeA->show();
+}
+
+void WindowMain::cancelUpdateBtnClicked() {
+    this->prepareBuildDataTab();
 }
 
 void WindowMain::preformCollectionBtnClicked() {
