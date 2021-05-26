@@ -75,6 +75,9 @@ private:
 
     NoticeAdapter* v_noticeA = nullptr;
 
+    /*! Sets the all the tabs palett */
+    void setTabsPalett();
+
     /*! Saves the windows settings */
     void saveWindowSettings();
     /*! Loads the windows settings */

@@ -35,6 +35,7 @@ WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::Wind
     connect(this->v_ui->actionSaveData,&QAction::triggered,this,&WindowMain::saveProgramData);
     connect(this->v_ui->actionLoadData,&QAction::triggered,this,&WindowMain::loadProgramData);
 
+    this->setTabsPalett();
     this->loadWindowSettings();
 }
 
@@ -274,6 +275,15 @@ void WindowMain::loadProgramData() {
 }
 
 //Private functions
+void WindowMain::setTabsPalett() {
+    QPalette p;
+
+        p.setColor(QPalette::Background,Qt::lightGray);
+
+        this->v_ui->mainInfo_tab->setPalette(p);
+        this->v_ui->buildData_tab->setPalette(p);
+}
+
 void WindowMain::saveWindowSettings() {
     Settings s("./Settings/LibraryColectorData.libColSet");
 
