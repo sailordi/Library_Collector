@@ -25,3 +25,14 @@ Added slot that will save the programs data
 Added slot that will load the programs data
 Fixed issue where collection did not work
 ```
+## V3
+```
+Created the class BuildData
+Created the class MainInfoWidget
+Created the class BuildDataWidget
+Created the class TextWrapDelegate
+Created the class BuildDataTreeViewAdapter
+Created the class BuildDataViewWidget
+Updated the UI
+Updated the main window to use the new widgets
+```
