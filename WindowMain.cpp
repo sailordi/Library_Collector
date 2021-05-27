@@ -133,7 +133,7 @@ void WindowMain::addUpdateBtnClicked() {
         else {
             this->updateData();
         }
-        this->v_buildDataViewW->update();
+        this->v_buildDataViewW->updateView();
         this->prepareBuildDataTab();
     }catch(NoticePair p) {
         this->v_noticeA->add(p.first,p.second);
@@ -185,7 +185,7 @@ void WindowMain::removeSelectedBuildData() {
 
             this->v_noticeA->add(MessageHandler::removeBuildData(d),NoticeFlag::MESSAGE);
         }
-        this->v_buildDataViewW->update();
+        this->v_buildDataViewW->updateView();
 
         this->v_noticeA->show();
 }
@@ -336,7 +336,7 @@ void WindowMain::loadProgramData() {
 
     delete s;
 
-    this->v_buildDataViewW->update();
+    this->v_buildDataViewW->updateView();
 
     QFileInfo f(str);
 
