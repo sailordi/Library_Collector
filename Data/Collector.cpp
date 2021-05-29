@@ -14,8 +14,17 @@ Collector::Collector(QString fromPath,QString toPath,QStringList suffix,bool cre
     this->v_createDirs = createDirs;
 }
 
-Collector::~Collector() {
+Collector::Collector(QString fromPath,QString toPath,QList<QString> excludedPaths,QStringList suffix,bool createDirs) {
+    this->v_fromPath = fromPath;
+    this->v_toPath = toPath;
+    this->v_excludedPaths = excludedPaths;
+    this->v_suffix = suffix;
+    this->v_createDirs = createDirs;
+}
 
+Collector::~Collector() {
+    this->v_excludedPaths.clear();
+    this->v_suffix.clear();
 }
 
 bool Collector::canCollect() {
@@ -88,10 +97,16 @@ void Collector::dir(QFileInfo i) {
     QString toP = Collector::formatOutPath(this->v_toPath,n);
     QString fromP = i.absolutePath()+"/"+i.baseName()+"/";
 
+    for(int i = 0; i < this->v_excludedPaths.size(); i++) {
+        if(fromP.compare(this->v_excludedPaths.at(i)+"/") == 0) {
+            return;
+        }
+    }
+
     if(this->v_createDirs == true) {
         Collector::createPath(toP);
     }
-    Collector c(fromP,toP,this->v_suffix,this->v_createDirs);
+    Collector c(fromP,toP,this->v_excludedPaths,this->v_suffix,this->v_createDirs);
 
     c.collect();
 }

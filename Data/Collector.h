@@ -19,7 +19,7 @@ class QFileInfo;
  * \author Last to touch it: Sailordi
  *
  * \date Created: 2021-05-20
- * \date Last update: 2021-05-20
+ * \date Last update: 2021-05-29
 */
 class Collector
 {
@@ -31,6 +31,14 @@ public:
      * \param createDirs - If dirs should be created inside the output path [Default: true]
     */
     Collector(QString fromPath,QString toPath,QStringList suffix,bool createDirs = true);
+    /*! Constructor
+     * \param fromPath - The path to search for files
+     * \param toPath - The output path
+     * \param excludedPaths - The paths to exclude
+     * \param suffix - Suffixes to copy
+     * \param createDirs - If dirs should be created inside the output path [Default: true]
+    */
+    Collector(QString fromPath,QString toPath,QList<QString> excludedPaths,QStringList suffix,bool createDirs = true);
     /*! Deconstructor */
     ~Collector();
 
@@ -58,6 +66,7 @@ private:
     QString v_fromPath = "",v_toPath = "";
     bool v_createDirs;
     QStringList v_suffix;
+    QList<QString> v_excludedPaths;
 
     /*! Creates a folder in the output path and performs collection of the dirs files
      * \param i - The file info
