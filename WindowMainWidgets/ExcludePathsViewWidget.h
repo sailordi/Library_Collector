@@ -45,6 +45,11 @@ public:
     */
     QList<QString>* excludedPathsListP();
 
+    /*! Returns the number of selected rows
+     * \returns int
+    */
+    int numberOfSelectedRows();
+
 private:
     QLabel* v_excludedPathsL = nullptr;
 

@@ -27,6 +27,10 @@ QList<QString>* ExcludePathsViewWidget::excludedPathsListP() {
     return &this->v_excludedPathList;
 }
 
+int ExcludePathsViewWidget::numberOfSelectedRows() {
+    return this->v_view->numberOfSelectedRows();
+}
+
 //Private functions
 void ExcludePathsViewWidget::init() {
     this->v_excludedPathsL = new QLabel(this->v_p);
