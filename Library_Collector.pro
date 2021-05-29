@@ -54,6 +54,7 @@ SOURCES += main.cpp \
     WindowMain.cpp \
     WindowMainWidgets/BuildDataViewWidget.cpp \
     WindowMainWidgets/BuildDataWidget.cpp \
+    WindowMainWidgets/ExcludePathsViewWidget.cpp \
     WindowMainWidgets/MainInfoWidget.cpp
 
 HEADERS += \
@@ -68,6 +69,7 @@ HEADERS += \
     WindowMain.h \
     WindowMainWidgets/BuildDataViewWidget.h \
     WindowMainWidgets/BuildDataWidget.h \
+    WindowMainWidgets/ExcludePathsViewWidget.h \
     WindowMainWidgets/MainInfoWidget.h
 
 FORMS += \
