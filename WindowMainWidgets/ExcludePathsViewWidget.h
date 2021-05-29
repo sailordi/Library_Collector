@@ -43,5 +43,8 @@ private:
 
     TreeViewAdapterNoChildRows* v_view = nullptr;
 
+    /*! Initializes widgets that are used */
+    void init();
+
 };
 #endif // EXCLUDEPATHSVIEWWIDGET_H
