@@ -36,6 +36,9 @@ public:
     /*! Deconstructor */
     ~ExcludePathsViewWidget();
 
+    /*! Updates the view with the data from the excluded paths list */
+    void updateView();
+
     /*! Returns the list of excluded paths
      * \returns QList<QString>
     */

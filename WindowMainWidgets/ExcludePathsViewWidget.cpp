@@ -19,6 +19,18 @@ ExcludePathsViewWidget::~ExcludePathsViewWidget() {
     delete this->v_view;
 }
 
+void ExcludePathsViewWidget::updateView() {
+    this->v_view->clear();
+
+    for(int i = 0; i < this->v_excludedPathList.size(); i++) {
+        this->v_view->addData(i,{QVariant(this->v_excludedPathList.at(i) )});
+    }
+
+    this->v_view->resize();
+
+    this->v_excludedPathsL->setText("Excluded paths ["+QString::number(this->v_excludedPathList.size() )+"]");
+}
+
 QList<QString> ExcludePathsViewWidget::excludedPathsList() {
     return this->v_excludedPathList;
 }
@@ -56,5 +68,6 @@ void ExcludePathsViewWidget::init() {
     this->v_vLayout->addWidget(this->v_excludedPathsL);
     this->v_vLayout->addWidget(this->v_view->view() );
 
+    this->updateView();
 }
 
