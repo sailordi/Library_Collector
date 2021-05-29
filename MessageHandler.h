@@ -65,6 +65,16 @@ namespace MessageHandler {
     */
     void errorAddExcludePath(QList<QString> l,QString headerPath,QString excludePath);
 
+    /*! Checks if an exclud path can be updated
+     * \param l - List of excluded paths
+     * \param headerPath - The header path
+     * \param oldPos - The position of the old path
+     * \param oldPath - The old path
+     * \param excludePath - The new exclude path
+     * \throws QPair<Notice*,NoticeFlag>
+    */
+    void errorUpdateExcludePath(QList<QString> l,QString headerPath,int oldPos,QString oldPath,QString excludePath);
+
     /*! Checks if selection can be done
      * \param size - The build data list size
      * \param selected - The amount of data selected
