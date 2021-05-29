@@ -57,6 +57,9 @@ public:
     */
     QList<int> selectedRowsPosition();
 
+    /*! Clears thebexcluded paths list */
+    void clear();
+
 private:
     QLabel* v_excludedPathsL = nullptr;
 

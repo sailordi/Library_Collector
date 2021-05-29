@@ -47,6 +47,10 @@ QList<int> ExcludePathsViewWidget::selectedRowsPosition() {
     return this->v_view->selectedRowsPosition();
 }
 
+void ExcludePathsViewWidget::clear() {
+    this->v_excludedPathList.clear();
+}
+
 //Private functions
 void ExcludePathsViewWidget::init() {
     this->v_excludedPathsL = new QLabel(this->v_p);
