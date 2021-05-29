@@ -49,6 +49,10 @@ public:
      * \returns int
     */
     int numberOfSelectedRows();
+    /*! Returns a list with the positions of the slected rows
+     * \returns QList<int>
+    */
+    QList<int> selectedRowsPosition();
 
 private:
     QLabel* v_excludedPathsL = nullptr;
