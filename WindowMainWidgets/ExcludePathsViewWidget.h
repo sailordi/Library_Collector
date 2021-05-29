@@ -36,6 +36,15 @@ public:
     /*! Deconstructor */
     ~ExcludePathsViewWidget();
 
+    /*! Returns the list of excluded paths
+     * \returns QList<QString>
+    */
+    QList<QString> excludedPathsList();
+    /*! Returns a pointer the list of excluded paths
+     * \returns QList<QString>*
+    */
+    QList<QString>* excludedPathsListP();
+
 private:
     QLabel* v_excludedPathsL = nullptr;
 

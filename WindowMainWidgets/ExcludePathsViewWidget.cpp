@@ -19,6 +19,14 @@ ExcludePathsViewWidget::~ExcludePathsViewWidget() {
     delete this->v_view;
 }
 
+QList<QString> ExcludePathsViewWidget::excludedPathsList() {
+    return this->v_excludedPathList;
+}
+
+QList<QString>* ExcludePathsViewWidget::excludedPathsListP() {
+    return &this->v_excludedPathList;
+}
+
 //Private functions
 void ExcludePathsViewWidget::init() {
     this->v_excludedPathsL = new QLabel(this->v_p);
