@@ -19,7 +19,7 @@ typedef QPair<Notice*,NoticeFlag> NoticePair;
  * \author Last to touch it: Sailordi
  *
  * \date Created: 2021-05-21
- * \date Last update: 2021-05-25
+ * \date Last update: 2021-05-29
 */
 namespace MessageHandler {
     /*! Checks if build data can be added
@@ -56,6 +56,14 @@ namespace MessageHandler {
      * \returns Notice*
     */
     Notice* removeBuildData(BuildDataP d);
+
+    /*! Checks if an exclud path can be added
+     * \param l - List of excluded paths
+     * \param headerPath - The header path
+     * \param excludePath - The new exclude path
+     * \throws QPair<Notice*,NoticeFlag>
+    */
+    void errorAddExcludePath(QList<QString> l,QString headerPath,QString excludePath);
 
     /*! Checks if selection can be done
      * \param size - The build data list size

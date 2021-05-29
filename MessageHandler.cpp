@@ -240,6 +240,36 @@ Notice* MessageHandler::removeBuildData(BuildDataP d) {
         return new Notice(str);
 }
 
+void MessageHandler::errorAddExcludePath(QList<QString> l,QString headerPath,QString excludePath) {
+    QString str = "";
+
+        if(headerPath.isEmpty() == true) {
+            str = "Header path is missing"+Helper::newRow();
+        }
+
+        if(str.isEmpty() == true && excludePath.compare(headerPath) == 0) {
+            str = "Exclude path is the same as header path"+Helper::newRow(2)
+                          +excludePath+Helper::newRow();
+        }
+        if(str.isEmpty() == true && excludePath.contains(headerPath) == false) {
+            str = "Exclude path is not in header path"+Helper::newRow(2)
+                          +excludePath+Helper::newRow();
+        }
+
+        for(int i = 0; str.isEmpty() == true && i < l.size(); i++) {
+            if(l.at(i).compare(excludePath) == 0) {
+                str = "Exclude path alredy exist in excluded paths list"+Helper::newRow(2)
+                              +excludePath+Helper::newRow();
+                break;
+            }
+        }
+
+        if(str.isEmpty() == false) {
+            throw NoticePair(new Notice(str),NoticeFlag::ERROR);
+        }
+
+}
+
 void MessageHandler::errorSelection(int size,int selected,bool update) {
     QString str;
 
