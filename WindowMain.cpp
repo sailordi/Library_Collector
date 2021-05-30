@@ -3,6 +3,7 @@
 
 #include <QFileDialog>
 
+#include "Base/Other/Helper.h"
 #include "Base/Settings/Settings.h"
 
 #include "MessageHandler.h"
@@ -222,6 +223,40 @@ void WindowMain::addExcludePath() {
         l->push_back(str);
 
         this->v_excludedPathsW->updateView();
+}
+
+void WindowMain::updateSelectedExcludePath() {
+    QString hP = this->v_mainInfoW->headerPath();
+    QList<QString>* l = this->v_excludedPathsW->excludedPathsListP();
+
+        this->v_noticeA->reset("Update selected exclude path");
+
+        try {
+            MessageHandler::errorSelection(l->size(),this->v_excludedPathsW->numberOfSelectedRows(),false);
+        }catch(NoticePair p) {
+            this->v_noticeA->add(p.first,p.second);
+            this->v_noticeA->show();
+            return;
+        }
+        int oldPos = this->v_excludedPathsW->selectedRowsPosition().first();
+        QString oldPath = l->at(oldPos);
+        QString str = QFileDialog::getExistingDirectory(nullptr,"Update path to exclude old path:"+Helper::newRow()+oldPath+"...","");
+
+        if(str.isEmpty() == true) {
+            return;
+        }
+
+        try {
+            MessageHandler::errorUpdateExcludePath(*l,hP,oldPos,oldPath,str);
+        }catch(NoticePair p) {
+            this->v_noticeA->add(p.first,p.second);
+            this->v_noticeA->show();
+            return;
+        }
+
+        l->replace(oldPos,str);
+
+        this->v_excludedPathsW->update();
 }
 
 void WindowMain::preformCollectionBtnClicked() {
