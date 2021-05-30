@@ -21,7 +21,7 @@ WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::Wind
 
     this->v_mainInfoW = new MainInfoWidget(this->v_ui->mainInfo_layout);
     this->v_buildDataViewW = new BuildDataViewWidget(this->v_ui->buildView_layout);
-    this->v_buildDataW = new BuildDataWidget(this->v_ui->buildInfo_layout);
+    this->v_buildDataW = new BuildDataWidget(this->v_ui->buildData_layout);
 
     connect(this->v_mainInfoW->outputPathButton(),&QPushButton::clicked,this,&WindowMain::libraryOutPathBtnClicked);
 
@@ -30,8 +30,8 @@ WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::Wind
     connect(this->v_buildDataW->releasePathButton(),&QPushButton::clicked,this,&WindowMain::libraryReleasePathBtnClicked);
     connect(this->v_buildDataW->debugPathButton(),&QPushButton::clicked,this,&WindowMain::libraryDebugPathBtnClicked);
 
-    connect(this->v_ui->addUpdateBuildInfo_btn,&QPushButton::clicked,this,&WindowMain::addUpdateBtnClicked);
-    connect(this->v_ui->cancelBuildInfoUpdate_btn,&QPushButton::clicked,this,&WindowMain::cancelUpdateBtnClicked);
+    connect(this->v_ui->addUpdateBuildData_btn,&QPushButton::clicked,this,&WindowMain::addUpdateBtnClicked);
+    connect(this->v_ui->cancelBuildDataUpdate_btn,&QPushButton::clicked,this,&WindowMain::cancelUpdateBtnClicked);
 
     connect(this->v_ui->preformCollection_btn,&QPushButton::clicked,this,&WindowMain::preformCollectionBtnClicked);
 
@@ -60,22 +60,22 @@ void WindowMain::prepareBuildDataTab(int oldDataPosition,BuildDataP data) {
     this->v_buildDataW->clear(false);
 
     if(data.isNull() == true) {
-        this->v_ui->addUpdateBuildInfo_btn->setText("Add");
+        this->v_ui->addUpdateBuildData_btn->setText("Add");
         this->v_buildDataW->hideResetButtons(true);
 
-        this->v_ui->cancelBuildInfoUpdate_btn->setHidden(true);
+        this->v_ui->cancelBuildDataUpdate_btn->setHidden(true);
 
-        this->v_ui->buildInfoBtn_spacer2->changeSize(0,0,QSizePolicy::Ignored,QSizePolicy::Ignored);
+        this->v_ui->buildDataBtn_spacer2->changeSize(0,0,QSizePolicy::Ignored,QSizePolicy::Ignored);
 
         this->v_ui->tabWidget->setCurrentIndex(0);
     }
     else {
-        this->v_ui->addUpdateBuildInfo_btn->setText("Update");
+        this->v_ui->addUpdateBuildData_btn->setText("Update");
         this->v_buildDataW->hideResetButtons(false);
 
-        this->v_ui->cancelBuildInfoUpdate_btn->setHidden(false);
+        this->v_ui->cancelBuildDataUpdate_btn->setHidden(false);
 
-        this->v_ui->buildInfoBtn_spacer2->changeSize(40,20,QSizePolicy::Expanding,QSizePolicy::Expanding);
+        this->v_ui->buildDataBtn_spacer2->changeSize(40,20,QSizePolicy::Expanding,QSizePolicy::Expanding);
 
         this->v_buildDataW->setOldData(oldDataPosition,data);
 
@@ -127,7 +127,7 @@ void WindowMain::libraryReleasePathBtnClicked() {
 
 void WindowMain::addUpdateBtnClicked() {
     try {
-        if(this->v_ui->addUpdateBuildInfo_btn->text().compare("Add") == 0) {
+        if(this->v_ui->addUpdateBuildData_btn->text().compare("Add") == 0) {
             this->addData();
         }
         else {

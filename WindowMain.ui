@@ -273,7 +273,7 @@
          </spacer>
         </item>
         <item>
-         <layout class="QGridLayout" name="buildInfo_layout">
+         <layout class="QGridLayout" name="buildData_layout">
           <item row="1" column="0">
            <widget class="QLineEdit" name="lineEdit_2"/>
           </item>
@@ -392,9 +392,9 @@
          </spacer>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="buildInfoBtn_layout">
+         <layout class="QHBoxLayout" name="buildDataBtn_layout">
           <item>
-           <spacer name="buildInfoBtn_spacer1">
+           <spacer name="buildDataBtn_spacer1">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -407,14 +407,14 @@
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="addUpdateBuildInfo_btn">
+           <widget class="QPushButton" name="addUpdateBuildData_btn">
             <property name="text">
              <string>Add</string>
             </property>
            </widget>
           </item>
           <item>
-           <spacer name="buildInfoBtn_spacer2">
+           <spacer name="buildDataBtn_spacer2">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -427,14 +427,14 @@
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="cancelBuildInfoUpdate_btn">
+           <widget class="QPushButton" name="cancelBuildDataUpdate_btn">
             <property name="text">
              <string>Cancel update</string>
             </property>
            </widget>
           </item>
           <item>
-           <spacer name="buildInfoBtn_spacer3">
+           <spacer name="buildDataBtn_spacer3">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -466,6 +466,30 @@
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="exlcludedPaths_tab">
+       <attribute name="title">
+        <string>Excluded paths</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <layout class="QVBoxLayout" name="exludedPaths_layout">
+          <item>
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Exluded paths [0]</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTreeView" name="treeView_2"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -487,7 +511,7 @@
      <bold>true</bold>
     </font>
    </property>
-   <widget class="QMenu" name="menuSaveLoadData">
+   <widget class="QMenu" name="menuOther">
     <property name="font">
      <font>
       <family>Times New Roman</family>
@@ -495,11 +519,14 @@
      </font>
     </property>
     <property name="title">
-     <string>Save / Load data</string>
+     <string>Other</string>
     </property>
     <addaction name="actionSaveData"/>
     <addaction name="separator"/>
     <addaction name="actionLoadData"/>
+    <addaction name="separator"/>
+    <addaction name="actionCollectAllBuildDataSameFolder"/>
+    <addaction name="actionCollectAllBuildDataDifferentFolders"/>
    </widget>
    <widget class="QMenu" name="menuBuildData">
     <property name="font">
@@ -511,11 +538,30 @@
     <property name="title">
      <string>Build data</string>
     </property>
-    <addaction name="actionUpdate_selected_build_data"/>
-    <addaction name="actionRemove_selected_build_info"/>
+    <addaction name="actionUpdateSelectedBuildData"/>
+    <addaction name="actionRemoveSelectedBuildData"/>
+    <addaction name="separator"/>
+    <addaction name="actionKeepAddingBuildData"/>
    </widget>
-   <addaction name="menuSaveLoadData"/>
+   <widget class="QMenu" name="menuExcludePath">
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>Exclude path</string>
+    </property>
+    <addaction name="actionAddExcludedPath"/>
+    <addaction name="separator"/>
+    <addaction name="actionUpdateSelectedExcludePath"/>
+    <addaction name="separator"/>
+    <addaction name="actionRemoveSelectedExcludePath"/>
+   </widget>
+   <addaction name="menuOther"/>
    <addaction name="menuBuildData"/>
+   <addaction name="menuExcludePath"/>
   </widget>
   <action name="actionSaveData">
    <property name="text">
@@ -533,14 +579,53 @@
     <string>Load data</string>
    </property>
   </action>
-  <action name="actionUpdate_selected_build_data">
+  <action name="actionUpdateSelectedBuildData">
    <property name="text">
     <string>Update selected build data</string>
    </property>
   </action>
-  <action name="actionRemove_selected_build_info">
+  <action name="actionRemoveSelectedBuildData">
    <property name="text">
     <string>Remove selected build data</string>
+   </property>
+  </action>
+  <action name="actionAddExcludedPath">
+   <property name="text">
+    <string>Add</string>
+   </property>
+  </action>
+  <action name="actionUpdateSelectedExcludePath">
+   <property name="text">
+    <string>Update selected exclude path</string>
+   </property>
+  </action>
+  <action name="actionRemoveSelectedExcludePath">
+   <property name="text">
+    <string>Remove selected exclude path</string>
+   </property>
+  </action>
+  <action name="actionCollectAllBuildDataSameFolder">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Collect all build data to same the folder</string>
+   </property>
+  </action>
+  <action name="actionCollectAllBuildDataDifferentFolders">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Collect all build data to different folders</string>
+   </property>
+  </action>
+  <action name="actionKeepAddingBuildData">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Keep adding build data</string>
    </property>
   </action>
  </widget>
