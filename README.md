@@ -36,3 +36,14 @@ Created the class BuildDataViewWidget
 Updated the UI
 Updated the main window to use the new widgets
 ```
+## V4
+```
+Fixed error in comments
+Created the class ExcludePathsViewWidget
+Added a variable and a constructor in the class Collector
+Added function that checks for error when adding exclude path
+Added function that checks for error when uppdating exclude path
+Added new elements to the UI and renamed others
+Added functions that preform the collection in diffrent ways
+Added a slot that is activated when add exclude path is clicked
+Added a slot that is activated when update exclude path is clicked
