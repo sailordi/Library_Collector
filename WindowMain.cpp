@@ -38,6 +38,13 @@ WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::Wind
     connect(this->v_ui->actionSaveData,&QAction::triggered,this,&WindowMain::saveProgramData);
     connect(this->v_ui->actionLoadData,&QAction::triggered,this,&WindowMain::loadProgramData);
 
+    QActionGroup* collectOptions = new QActionGroup(this);
+
+    collectOptions->addAction(this->v_ui->actionCollectAllBuildDataSameFolder);
+    collectOptions->addAction(this->v_ui->actionCollectAllBuildDataDifferentFolders);
+
+    this->v_ui->tabWidget->setCurrentIndex(0);
+
     this->prepareBuildDataTab();
 
     this->setTabsPalett();
@@ -352,6 +359,7 @@ void WindowMain::setTabsPalett() {
 
         this->v_ui->mainInfo_tab->setPalette(p);
         this->v_ui->buildData_tab->setPalette(p);
+        this->v_ui->exlcludedPaths_tab->setPalette(p);
 }
 
 void WindowMain::addData() {
@@ -389,6 +397,8 @@ void WindowMain::saveWindowSettings() {
         QPoint pos = this->pos();
 
         s.addBlockData("Pos",pos);
+        s.addBlockData("SameFolder",this->v_ui->actionCollectAllBuildDataSameFolder->isChecked() );
+        s.addBlockData("KeepAddingData",this->v_ui->actionKeepAddingBuildData->isChecked() );
 
         s.endGroup();
 
@@ -401,8 +411,12 @@ void WindowMain::loadWindowSettings() {
         s.startGroup("WindowMain");
 
         QPoint pos = s.getBlockData("Pos",QPoint(100,100) ).toPoint();
+        bool sA = s.getBlockData("SameFolder",false).toBool();
+        bool kA = s.getBlockData("KeepAddingdata",false).toBool();
 
         this->move(pos);
+        this->v_ui->actionCollectAllBuildDataDifferentFolders->setChecked(!sA);
+        this->v_ui->actionKeepAddingBuildData->setChecked(kA);
 
         s.endGroup();
 
