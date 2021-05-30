@@ -95,6 +95,21 @@ private:
     /*! Updates the selected build data */
     void updateData();
 
+    /*! Performs the collection and separates all builds into different folders
+     * \param outP - The output path
+     * \param libraryBaseName - The library base name
+     * \param headerP - The header path
+     * \param l - The list of build data
+    */
+    void collectionDiffrenFolders(QString outP,QString libraryBaseName,QString headerP,QList<BuildDataP> l);
+    /*! Performs the collection with all builds in the same folder
+     * \param outP - The output path
+     * \param libraryBaseName - The library base name
+     * \param headerP - The header path
+     * \param l - The list of build data
+    */
+    void collectionSameFolder(QString outP,QString libraryBaseName,QString headerP,QList<BuildDataP> l);
+
     /*! Saves the windows settings */
     void saveWindowSettings();
     /*! Loads the windows settings */
