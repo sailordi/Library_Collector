@@ -259,6 +259,28 @@ void WindowMain::updateSelectedExcludePath() {
         this->v_excludedPathsW->update();
 }
 
+void WindowMain::removeSelectedExcludePath() {
+    QList<QString>* l = this->v_excludedPathsW->excludedPathsListP();
+
+        this->v_noticeA->reset("Remove selected exclude path");
+
+        try {
+            MessageHandler::errorSelection(l->size(),this->v_excludedPathsW->numberOfSelectedRows(),true);
+        }catch(NoticePair p) {
+            this->v_noticeA->add(p.first,p.second);
+            this->v_noticeA->show();
+            return;
+        }
+
+        QList<int> s = this->v_excludedPathsW->selectedRowsPosition();
+
+        for(int i = s.size()-1; i >= 0; i--) {
+            l->removeAt(s.at(i) );
+        }
+
+        this->v_excludedPathsW->update();
+}
+
 void WindowMain::preformCollectionBtnClicked() {
     QString outP = this->v_mainInfoW->outputPath();
     QString libraryBaseName = this->v_mainInfoW->libraryBaseName();

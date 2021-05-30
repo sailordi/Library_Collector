@@ -73,6 +73,8 @@ private slots:
     void addExcludePath();
     /*! Slot that is activated when update exclude path meny item is clicked */
     void updateSelectedExcludePath();
+    /*! Slot that is activated when update exclude path meny item is clicked */
+    void removeSelectedExcludePath();
 
     /*! Slot that is activated when preform collection button is clicked */
     void preformCollectionBtnClicked();
