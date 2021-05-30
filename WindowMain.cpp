@@ -200,6 +200,30 @@ void WindowMain::removeSelectedBuildData() {
         this->v_noticeA->show();
 }
 
+void WindowMain::addExcludePath() {
+    QString str = QFileDialog::getExistingDirectory(nullptr,"Add path to exclude...","");
+
+        if(str.isEmpty() == true) {
+            return;
+        }
+        QString hP = this->v_mainInfoW->headerPath();
+        QList<QString>* l = this->v_excludedPathsW->excludedPathsListP();
+
+        this->v_noticeA->reset("Add exclude path");
+
+        try {
+            MessageHandler::errorAddExcludePath(*l,hP,str);
+        }catch(NoticePair p) {
+            this->v_noticeA->add(p.first,p.second);
+            this->v_noticeA->show();
+            return;
+        }
+
+        l->push_back(str);
+
+        this->v_excludedPathsW->updateView();
+}
+
 void WindowMain::preformCollectionBtnClicked() {
     QString outP = this->v_mainInfoW->outputPath();
     QString libraryBaseName = this->v_mainInfoW->libraryBaseName();
