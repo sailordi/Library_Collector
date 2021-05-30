@@ -11,6 +11,7 @@
 #include "Data/Collector.h"
 #include "WindowMainWidgets/BuildDataViewWidget.h"
 #include "WindowMainWidgets/BuildDataWidget.h"
+#include "WindowMainWidgets/ExcludePathsViewWidget.h"
 #include "WindowMainWidgets/MainInfoWidget.h"
 
 //Public functions
@@ -22,6 +23,7 @@ WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::Wind
     this->v_mainInfoW = new MainInfoWidget(this->v_ui->mainInfo_layout);
     this->v_buildDataViewW = new BuildDataViewWidget(this->v_ui->buildView_layout);
     this->v_buildDataW = new BuildDataWidget(this->v_ui->buildData_layout);
+    this->v_excludedPathsW = new ExcludePathsViewWidget(this->v_ui->exludedPaths_layout);
 
     connect(this->v_mainInfoW->outputPathButton(),&QPushButton::clicked,this,&WindowMain::libraryOutPathBtnClicked);
 
@@ -59,6 +61,7 @@ WindowMain::~WindowMain() {
     delete this->v_buildDataW;
     delete this->v_buildDataViewW;
     delete this->v_mainInfoW;
+    delete  this->v_excludedPathsW;
 
     delete this->v_ui;
 }
@@ -289,6 +292,19 @@ void WindowMain::saveProgramData() {
     }
 
     s->endArray();
+
+    QList<QString> l2 = this->v_excludedPathsW->excludedPathsList();
+    s->startArray("ExcludedPaths");
+    s->clearArray(false);
+
+    for(int i = 0; i < l2.size(); i++) {
+        QList<QString> k = {"Path"};
+        QList<QVariant> v = {l2.at(i)};
+
+        s->addArrayData(k,v);
+    }
+
+    s->endArray();
     s->endGroup();
 
     delete s;
@@ -339,11 +355,33 @@ void WindowMain::loadProgramData() {
     }
 
     s->endArray();
+
+    this->v_excludedPathsW->clear();
+    QList<QString>* l2 = this->v_excludedPathsW->excludedPathsListP();
+    s->startArray("ExcludedPaths");
+
+    try {
+        size = s->arraySize();
+    } catch (QString e) {
+        //The array did not exist / other error ocured
+        size = 0;
+    }
+
+    for(int i = 0; i < size; i++) {
+        QList<QString> k = {"Path"};
+        QList<QVariant> v = {""};
+        QList<QVariant> d = s->getArrayData(i,k,v);
+
+        l2->push_back(d.first().toString() );
+    }
+
+    s->endArray();
     s->endGroup();
 
     delete s;
 
     this->v_buildDataViewW->updateView();
+    this->v_excludedPathsW->updateView();
 
     QFileInfo f(str);
 
