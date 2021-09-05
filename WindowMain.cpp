@@ -26,32 +26,14 @@ WindowMain::WindowMain(QWidget *parent) : QMainWindow(parent), v_ui(new Ui::Wind
     this->v_buildDataW = new BuildDataWidget(this->v_ui->buildData_layout);
     this->v_excludedPathsW = new ExcludePathsViewWidget(this->v_ui->exludedPaths_layout);
 
-    connect(this->v_mainInfoW->outputPathButton(),&QPushButton::clicked,this,&WindowMain::libraryOutPathBtnClicked);
-
-    connect(this->v_mainInfoW->headerPathButton(),&QPushButton::clicked,this,&WindowMain::libraryHeaderPathBtnClicked);
-
-    connect(this->v_buildDataW->releasePathButton(),&QPushButton::clicked,this,&WindowMain::libraryReleasePathBtnClicked);
-    connect(this->v_buildDataW->debugPathButton(),&QPushButton::clicked,this,&WindowMain::libraryDebugPathBtnClicked);
-
-    connect(this->v_ui->addUpdateBuildData_btn,&QPushButton::clicked,this,&WindowMain::addUpdateBtnClicked);
-    connect(this->v_ui->cancelBuildDataUpdate_btn,&QPushButton::clicked,this,&WindowMain::cancelUpdateBtnClicked);
-
-    connect(this->v_ui->preformCollection_btn,&QPushButton::clicked,this,&WindowMain::preformCollectionBtnClicked);
-
-    connect(this->v_ui->actionSaveData,&QAction::triggered,this,&WindowMain::saveProgramData);
-    connect(this->v_ui->actionLoadData,&QAction::triggered,this,&WindowMain::loadProgramData);
-
-    QActionGroup* collectOptions = new QActionGroup(this);
-
-    collectOptions->addAction(this->v_ui->actionCollectAllBuildDataSameFolder);
-    collectOptions->addAction(this->v_ui->actionCollectAllBuildDataDifferentFolders);
-
     this->v_ui->tabWidget->setCurrentIndex(0);
 
     this->prepareBuildDataTab();
 
     this->setTabsPalett();
     this->loadWindowSettings();
+
+    this->connections();
 }
 
 WindowMain::~WindowMain() {
@@ -443,6 +425,28 @@ void WindowMain::setTabsPalett() {
         this->v_ui->mainInfo_tab->setPalette(p);
         this->v_ui->buildData_tab->setPalette(p);
         this->v_ui->exlcludedPaths_tab->setPalette(p);
+}
+
+void WindowMain::connections() {
+    connect(this->v_mainInfoW->outputPathButton(),&QPushButton::clicked,this,&WindowMain::libraryOutPathBtnClicked);
+
+    connect(this->v_mainInfoW->headerPathButton(),&QPushButton::clicked,this,&WindowMain::libraryHeaderPathBtnClicked);
+
+    connect(this->v_buildDataW->releasePathButton(),&QPushButton::clicked,this,&WindowMain::libraryReleasePathBtnClicked);
+    connect(this->v_buildDataW->debugPathButton(),&QPushButton::clicked,this,&WindowMain::libraryDebugPathBtnClicked);
+
+    connect(this->v_ui->addUpdateBuildData_btn,&QPushButton::clicked,this,&WindowMain::addUpdateBtnClicked);
+    connect(this->v_ui->cancelBuildDataUpdate_btn,&QPushButton::clicked,this,&WindowMain::cancelUpdateBtnClicked);
+
+    connect(this->v_ui->preformCollection_btn,&QPushButton::clicked,this,&WindowMain::preformCollectionBtnClicked);
+
+    connect(this->v_ui->actionSaveData,&QAction::triggered,this,&WindowMain::saveProgramData);
+    connect(this->v_ui->actionLoadData,&QAction::triggered,this,&WindowMain::loadProgramData);
+
+    QActionGroup* collectOptions = new QActionGroup(this);
+
+    collectOptions->addAction(this->v_ui->actionCollectAllBuildDataSameFolder);
+    collectOptions->addAction(this->v_ui->actionCollectAllBuildDataDifferentFolders);
 }
 
 void WindowMain::addData() {

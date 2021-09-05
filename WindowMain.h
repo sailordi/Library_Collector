@@ -97,6 +97,9 @@ private:
     /*! Sets the all the tabs palett */
     void setTabsPalett();
 
+    /*! Connects slots to signals */
+    void connections();
+
     /*! Adds data to the build data list */
     void addData();
     /*! Updates the selected build data */
