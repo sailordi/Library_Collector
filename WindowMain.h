@@ -28,7 +28,7 @@ class NoticeAdapter;
  * \author Last to touch it: Sailordi
  *
  * \date Created: 2021-05-20
- * \date Last update: 2021-05-30
+ * \date Last update: 2021-09-06
 */
 class WindowMain : public QMainWindow
 {

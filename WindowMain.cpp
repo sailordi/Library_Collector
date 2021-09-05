@@ -308,7 +308,7 @@ void WindowMain::preformCollectionBtnClicked() {
 }
 
 void WindowMain::saveProgramData() {
-    QString str = QFileDialog::getSaveFileName(nullptr,"Save Library collect..",QString(),"Library collector Data(*.LibColDataV2)");
+    QString str = QFileDialog::getSaveFileName(nullptr,"Save Library collect..",QString(),"Library collector Data(*.LibColDataV3)");
 
     if(str.isEmpty() == true) {
         return;
@@ -361,7 +361,7 @@ void WindowMain::saveProgramData() {
 }
 
 void WindowMain::loadProgramData() {
-    QString str = QFileDialog::getOpenFileName(nullptr,"Load Library collect..",QString(),"Library collector Data(*.LibColDataV2)");
+    QString str = QFileDialog::getOpenFileName(nullptr,"Load Library collect..",QString(),"Library collector Data(*.LibColDataV3)");
 
     if(str.isEmpty() == true) {
         return;
