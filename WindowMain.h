@@ -65,24 +65,24 @@ private slots:
     void cancelUpdateBtnClicked();
 
     /*! Slot that is activated when update selected build data menu item is clicked */
-    void updateSelectedBuildData();
+    void updateSelectedBuildDataMenuClicked();
     /*! Slot that is activated when remove selected build data menu item is clicked */
-    void removeSelectedBuildData();
+    void removeSelectedBuildDataMenuClicked();
 
-    /*! Slot that is activated when add exclude path meny item is clicked */
-    void addExcludePath();
-    /*! Slot that is activated when update exclude path meny item is clicked */
-    void updateSelectedExcludePath();
-    /*! Slot that is activated when update exclude path meny item is clicked */
-    void removeSelectedExcludePath();
+    /*! Slot that is activated when add exclude path menu item is clicked */
+    void addExcludePathMenuClicked();
+    /*! Slot that is activated when update exclude path menu item is clicked */
+    void updateSelectedExcludePathMenuClicked();
+    /*! Slot that is activated when update exclude path menu item is clicked */
+    void removeSelectedExcludePathMenuClicked();
 
     /*! Slot that is activated when preform collection button is clicked */
     void preformCollectionBtnClicked();
 
-    /*! Saves the program data */
-    void saveProgramData();
-    /*! Loads the program data */
-    void loadProgramData();
+    /*! Saves the program data  menu item is clicked */
+    void saveProgramDataMenuClicked();
+    /*! Loads the program data  menu item is clicked */
+    void loadProgramDataMenuClicked();
 
 private:
     Ui::WindowMain* v_ui = nullptr;

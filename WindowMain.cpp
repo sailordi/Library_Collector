@@ -139,7 +139,7 @@ void WindowMain::cancelUpdateBtnClicked() {
     this->prepareBuildDataTab();
 }
 
-void WindowMain::updateSelectedBuildData() {
+void WindowMain::updateSelectedBuildDataMenuClicked() {
     int size = this->v_buildDataViewW->buildDataList().size(),selected = this->v_buildDataViewW->numberOfSelectedRows();
 
         this->v_noticeA->reset("Update build data");
@@ -157,7 +157,7 @@ void WindowMain::updateSelectedBuildData() {
 
 }
 
-void WindowMain::removeSelectedBuildData() {
+void WindowMain::removeSelectedBuildDataMenuClicked() {
     int size = this->v_buildDataViewW->buildDataList().size(),selected = this->v_buildDataViewW->numberOfSelectedRows();
 
         this->v_noticeA->reset("Remove build data");
@@ -183,7 +183,7 @@ void WindowMain::removeSelectedBuildData() {
         this->v_noticeA->show();
 }
 
-void WindowMain::addExcludePath() {
+void WindowMain::addExcludePathMenuClicked() {
     QString str = QFileDialog::getExistingDirectory(nullptr,"Add path to exclude...","");
 
         if(str.isEmpty() == true) {
@@ -207,7 +207,7 @@ void WindowMain::addExcludePath() {
         this->v_excludedPathsW->updateView();
 }
 
-void WindowMain::updateSelectedExcludePath() {
+void WindowMain::updateSelectedExcludePathMenuClicked() {
     QString hP = this->v_mainInfoW->headerPath();
     QList<QString>* l = this->v_excludedPathsW->excludedPathsListP();
 
@@ -241,7 +241,7 @@ void WindowMain::updateSelectedExcludePath() {
         this->v_excludedPathsW->update();
 }
 
-void WindowMain::removeSelectedExcludePath() {
+void WindowMain::removeSelectedExcludePathMenuClicked() {
     QList<QString>* l = this->v_excludedPathsW->excludedPathsListP();
 
         this->v_noticeA->reset("Remove selected exclude path");
@@ -289,7 +289,7 @@ void WindowMain::preformCollectionBtnClicked() {
         this->v_noticeA->show();
 }
 
-void WindowMain::saveProgramData() {
+void WindowMain::saveProgramDataMenuClicked() {
     QString str = QFileDialog::getSaveFileName(nullptr,"Save Library collect..",QString(),"Library collector Data(*.LibColDataV3)");
 
     if(str.isEmpty() == true) {
@@ -342,7 +342,7 @@ void WindowMain::saveProgramData() {
     this->v_noticeA->show();
 }
 
-void WindowMain::loadProgramData() {
+void WindowMain::loadProgramDataMenuClicked() {
     QString str = QFileDialog::getOpenFileName(nullptr,"Load Library collect..",QString(),"Library collector Data(*.LibColDataV3)");
 
     if(str.isEmpty() == true) {
@@ -440,8 +440,8 @@ void WindowMain::connections() {
 
     connect(this->v_ui->preformCollection_btn,&QPushButton::clicked,this,&WindowMain::preformCollectionBtnClicked);
 
-    connect(this->v_ui->actionSaveData,&QAction::triggered,this,&WindowMain::saveProgramData);
-    connect(this->v_ui->actionLoadData,&QAction::triggered,this,&WindowMain::loadProgramData);
+    connect(this->v_ui->actionSaveData,&QAction::triggered,this,&WindowMain::saveProgramDataMenuClicked);
+    connect(this->v_ui->actionLoadData,&QAction::triggered,this,&WindowMain::loadProgramDataMenuClicked);
 
     QActionGroup* collectOptions = new QActionGroup(this);
 
