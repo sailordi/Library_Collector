@@ -438,6 +438,13 @@ void WindowMain::connections() {
     connect(this->v_ui->addUpdateBuildData_btn,&QPushButton::clicked,this,&WindowMain::addUpdateBtnClicked);
     connect(this->v_ui->cancelBuildDataUpdate_btn,&QPushButton::clicked,this,&WindowMain::cancelUpdateBtnClicked);
 
+    connect(this->v_ui->actionUpdateSelectedBuildData,&QAction::triggered,this,&WindowMain::updateSelectedBuildDataMenuClicked);
+    connect(this->v_ui->actionRemoveSelectedBuildData,&QAction::triggered,this,&WindowMain::removeSelectedBuildDataMenuClicked);
+
+    connect(this->v_ui->actionAddExcludedPath,&QAction::triggered,this,&WindowMain::addExcludePathMenuClicked);
+    connect(this->v_ui->actionUpdateSelectedExcludePath,&QAction::triggered,this,&WindowMain::updateSelectedExcludePathMenuClicked);
+    connect(this->v_ui->actionRemoveSelectedExcludePath,&QAction::triggered,this,&WindowMain::removeSelectedExcludePathMenuClicked);
+
     connect(this->v_ui->preformCollection_btn,&QPushButton::clicked,this,&WindowMain::preformCollectionBtnClicked);
 
     connect(this->v_ui->actionSaveData,&QAction::triggered,this,&WindowMain::saveProgramDataMenuClicked);
