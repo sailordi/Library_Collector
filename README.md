@@ -47,3 +47,10 @@ Added new elements to the UI and renamed others
 Added functions that preform the collection in diffrent ways
 Added a slot that is activated when add exclude path is clicked
 Added a slot that is activated when update exclude path is clicked
+```
+## V4_1
+```
+Updated the program save file suffix
+Added function that connects slots to signals
+Rename functions to better represent what they do
+Fixed issue where some of the menu items were not connected to the slots required of them    
