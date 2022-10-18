@@ -9,7 +9,7 @@ QStandardItem* PathItemCreator::nonEditable(QVariant data,Qt::AlignmentFlag alig
     QStandardItem* it = new QStandardItem();
 
         it->setData(data,Qt::UserRole+1);
-        it->setData(QColor("black"),Qt::TextColorRole);
+        it->setData(QColor("black"),Qt::ForegroundRole);
         it->setData(aligment,Qt::TextAlignmentRole);
 
         it->setFlags(it->flags() | Qt::ItemIsSelectable | Qt::ItemIsEnabled);

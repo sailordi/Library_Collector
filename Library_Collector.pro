@@ -2,13 +2,13 @@ QT  += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++14
+CONFIG += c++17
 CONFIG -=debug_and_release
 
 CONFIG(release,debug|release)   { TARGET = Library_Collector }
 CONFIG(debug,debug|release)     { TARGET = Library_Collector_D }
 
-LIBRARIES_PATH = D:/Coding/Libs/Libraries_V4_1
+LIBRARIES_PATH = D:/Coding/Libs/Libraries_V5
 LIBRARIES_INCLUDE = $${LIBRARIES_PATH}/includes
 
 win32-g++ {

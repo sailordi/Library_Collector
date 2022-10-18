@@ -1,6 +1,7 @@
 #include "WindowMain.h"
 #include "ui_WindowMain.h"
 
+#include <QActionGroup>
 #include <QFileDialog>
 
 #include "Base/Other/Helper.h"
@@ -406,7 +407,6 @@ void WindowMain::loadProgramDataMenuClicked() {
     s->endGroup();
 
     delete s;
-
     this->v_buildDataViewW->updateView();
     this->v_excludedPathsW->updateView();
 
@@ -420,10 +420,15 @@ void WindowMain::loadProgramDataMenuClicked() {
 void WindowMain::setTabsPalett() {
     QPalette p;
 
-        p.setColor(QPalette::Background,Qt::lightGray);
+        p.setColor(QPalette::Window,Qt::lightGray);
 
+        this->v_ui->mainInfo_tab->setAutoFillBackground(true);
         this->v_ui->mainInfo_tab->setPalette(p);
+
+        this->v_ui->buildData_tab->setAutoFillBackground(true);
         this->v_ui->buildData_tab->setPalette(p);
+
+        this->v_ui->exlcludedPaths_tab->setAutoFillBackground(true);
         this->v_ui->exlcludedPaths_tab->setPalette(p);
 }
 
@@ -579,6 +584,7 @@ void WindowMain::collectionSameFolder(QString outP,QString libraryBaseName,QStri
 }
 
 void WindowMain::saveWindowSettings() {
+
     Settings s("./Settings/LibraryColectorData.libColSet");
 
         s.startGroup("WindowMain");
