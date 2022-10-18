@@ -267,6 +267,7 @@ void WindowMain::removeSelectedExcludePathMenuClicked() {
 void WindowMain::preformCollectionBtnClicked() {
     QString outP = this->v_mainInfoW->outputPath();
     QString libraryBaseName = this->v_mainInfoW->libraryBaseName();
+    QString baseBuildNameSeparator = this->v_mainInfoW->baseBuildNameSeparator();
     QString headerP = this->v_mainInfoW->headerPath();
     QList<BuildDataP> l = this->v_buildDataViewW->buildDataList();
 
@@ -281,7 +282,7 @@ void WindowMain::preformCollectionBtnClicked() {
         }
 
         if(this->v_ui->actionCollectAllBuildDataSameFolder->isChecked() == false) {
-            this->collectionDiffrenFolders(outP,libraryBaseName,headerP,l);
+            this->collectionDiffrenFolders(outP,libraryBaseName,baseBuildNameSeparator,headerP,l);
         }
         else {
             this->collectionSameFolder(outP,libraryBaseName,headerP,l);
@@ -305,6 +306,7 @@ void WindowMain::saveProgramDataMenuClicked() {
 
     s->addBlockData("OutputPath",this->v_mainInfoW->outputPath() );
     s->addBlockData("LibraryBaseName",this->v_mainInfoW->libraryBaseName() );
+    s->addBlockData("BaseBuildNameSeparator",this->v_mainInfoW->baseBuildNameSeparator() );
     s->addBlockData("HeaderPath",this->v_mainInfoW->headerPath() );
 
     QList<BuildDataP> l = this->v_buildDataViewW->buildDataList();
@@ -358,6 +360,7 @@ void WindowMain::loadProgramDataMenuClicked() {
 
     this->v_mainInfoW->setOutputPath(s->getBlockData("OutputPath","").toString() );
     this->v_mainInfoW->setLibraryBaseName(s->getBlockData("LibraryBaseName","").toString() );
+    this->v_mainInfoW->setBaseBuildNameSeparator(s->getBlockData("BaseBuildNameSeparator","").toString() );
     this->v_mainInfoW->setHeaderPath(s->getBlockData("HeaderPath","").toString() );
 
     s->startArray("Builds");
@@ -488,7 +491,7 @@ void WindowMain::updateData() {
         this->v_buildDataW->updateOldData();
 }
 
-void WindowMain::collectionDiffrenFolders(QString outP,QString libraryBaseName,QString headerP,QList<BuildDataP> l) {
+void WindowMain::collectionDiffrenFolders(QString outP,QString libraryBaseName,QString baseBuildNameSeparator,QString headerP,QList<BuildDataP> l) {
     for(int i = 0; i < l.size(); i++) {
         BuildDataP b = this->v_buildDataViewW->buildDataList().at(i);
         bool w = false;
@@ -505,7 +508,7 @@ void WindowMain::collectionDiffrenFolders(QString outP,QString libraryBaseName,Q
                 w = true;
             }
         }
-        QString destP = Collector::formatOutPath(outP,libraryBaseName+b->buildName() );
+        QString destP = Collector::formatOutPath(outP,libraryBaseName+baseBuildNameSeparator+b->buildName() );
         QString in = Collector::formatOutPath(destP,"includes");
         QString lib = Collector::formatOutPath(destP,"libs");
 
@@ -527,7 +530,7 @@ void WindowMain::collectionDiffrenFolders(QString outP,QString libraryBaseName,Q
         }
 
         if(w == false) {
-            this->v_noticeA->add(MessageHandler::collection(outP,libraryBaseName,headerP,b),NoticeFlag::MESSAGE);
+            this->v_noticeA->add(MessageHandler::collection(outP,libraryBaseName,baseBuildNameSeparator,headerP,b),NoticeFlag::MESSAGE);
         }
 
     }
@@ -576,7 +579,7 @@ void WindowMain::collectionSameFolder(QString outP,QString libraryBaseName,QStri
         }
 
         if(w == false) {
-            this->v_noticeA->add(MessageHandler::collection(outP,libraryBaseName,headerP,b),NoticeFlag::MESSAGE);
+            this->v_noticeA->add(MessageHandler::collection(outP,libraryBaseName,"",headerP,b),NoticeFlag::MESSAGE);
         }
 
     }

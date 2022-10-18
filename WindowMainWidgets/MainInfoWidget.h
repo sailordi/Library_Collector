@@ -20,7 +20,7 @@ class QPushButton;
  * \author Last to touch it: Sailordi
  *
  * \date Created: 2021-05-24
- * \date Last update: 2021-05-26
+ * \date Last update: 2022-10-18
 */
 class MainInfoWidget : public SingleLayoutWidget
 {
@@ -44,6 +44,10 @@ public:
      * \param libraryBaseName - The library base name
     */
     void setLibraryBaseName(QString libraryBaseName);
+    /*! Sets the library base build name separator
+     * \param baseBuildNameSeparator - The library base build name separator
+    */
+    void setBaseBuildNameSeparator(QString baseBuildNameSeparator);
 
     /*! Returns the output path
      * \returns QString
@@ -57,6 +61,10 @@ public:
      * \returns QString
     */
     QString libraryBaseName();
+    /*! Returns the library Base build name separator
+     * \returns QString
+    */
+    QString baseBuildNameSeparator();
 
     /*! Returns the output path selection button
      * \returns QPushButton*
@@ -69,7 +77,7 @@ public:
 
 private:
     QTextEdit* v_outputPathE = nullptr,*v_headerPathE = nullptr;
-    QLineEdit* v_libraryBaseNameE = nullptr;
+    QLineEdit* v_libraryBaseNameE = nullptr,*v_baseBuildNameSeparatorE = nullptr;
     QPushButton* v_outputPathB = nullptr,*v_headerPathB = nullptr;
 
     /*! Initializes widgets that are used */

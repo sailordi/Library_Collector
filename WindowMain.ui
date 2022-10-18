@@ -49,13 +49,6 @@
         </item>
         <item>
          <layout class="QGridLayout" name="mainInfo_layout">
-          <item row="9" column="0">
-           <widget class="QLabel" name="label_4">
-            <property name="text">
-             <string>Library base name: </string>
-            </property>
-           </widget>
-          </item>
           <item row="9" column="1">
            <widget class="QLineEdit" name="lineEdit"/>
           </item>
@@ -69,10 +62,10 @@
             </property>
            </widget>
           </item>
-          <item row="7" column="0" colspan="2">
-           <widget class="QPushButton" name="pushButton_2">
+          <item row="9" column="0">
+           <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>Select header path</string>
+             <string>Library base name: </string>
             </property>
            </widget>
           </item>
@@ -86,8 +79,51 @@
             </property>
            </widget>
           </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Library output path</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0" colspan="2">
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="text">
+             <string>Select header path</string>
+            </property>
+           </widget>
+          </item>
           <item row="3" column="0" colspan="2">
            <spacer name="verticalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>5</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QTextEdit" name="textEdit">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>80</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0" colspan="2">
+           <spacer name="verticalSpacer_6">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -109,41 +145,15 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="0" colspan="2">
-           <widget class="QTextEdit" name="textEdit">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>80</height>
-             </size>
-            </property>
-           </widget>
+          <item row="10" column="1">
+           <widget class="QLineEdit" name="lineEdit_3"/>
           </item>
-          <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="label_2">
+          <item row="10" column="0">
+           <widget class="QLabel" name="label_9">
             <property name="text">
-             <string>Library output path</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
+             <string>Base build name separator</string>
             </property>
            </widget>
-          </item>
-          <item row="8" column="0" colspan="2">
-           <spacer name="verticalSpacer_6">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>5</height>
-             </size>
-            </property>
-           </spacer>
           </item>
          </layout>
         </item>
@@ -500,14 +510,13 @@
      <x>0</x>
      <y>0</y>
      <width>1140</width>
-     <height>43</height>
+     <height>36</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Times New Roman</family>
      <pointsize>20</pointsize>
-     <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
@@ -516,6 +525,7 @@
      <font>
       <family>Times New Roman</family>
       <pointsize>16</pointsize>
+      <bold>true</bold>
      </font>
     </property>
     <property name="title">
@@ -533,6 +543,7 @@
      <font>
       <family>Times New Roman</family>
       <pointsize>16</pointsize>
+      <bold>true</bold>
      </font>
     </property>
     <property name="title">
@@ -548,6 +559,7 @@
      <font>
       <family>Times New Roman</family>
       <pointsize>16</pointsize>
+      <bold>true</bold>
      </font>
     </property>
     <property name="title">

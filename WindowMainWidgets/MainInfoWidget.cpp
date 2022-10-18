@@ -65,6 +65,10 @@ void MainInfoWidget::setLibraryBaseName(QString libraryBaseName) {
     this->v_libraryBaseNameE->setText(libraryBaseName);
 }
 
+void MainInfoWidget::setBaseBuildNameSeparator(QString baseBuildNameSeparator) {
+    this->v_baseBuildNameSeparatorE->setText(baseBuildNameSeparator);
+}
+
 QString MainInfoWidget::outputPath() {
     return this->v_outputPathE->toPlainText();
 }
@@ -75,6 +79,10 @@ QString MainInfoWidget::headerPath() {
 
 QString MainInfoWidget::libraryBaseName() {
     return this->v_libraryBaseNameE->text();
+}
+
+QString MainInfoWidget::baseBuildNameSeparator() {
+    return this->v_baseBuildNameSeparatorE->text();
 }
 
 QPushButton* MainInfoWidget::outputPathButton() {
@@ -90,10 +98,13 @@ void MainInfoWidget::init() {
     QLabel* outputPathL = new QLabel("Library output path",this->v_p);
     QLabel* headerPathL = new QLabel("Library header path",this->v_p);
     QLabel* libraryBaseNameL = new QLabel("Library base name: ",this->v_p);
+    QLabel* baseBuildNameSeparatorL = new QLabel("Base build name separator: ",this->v_p);
+
 
     this->v_outputPathE = new QTextEdit(this->v_p);
     this->v_headerPathE = new QTextEdit(this->v_p);
     this->v_libraryBaseNameE = new QLineEdit(this->v_p);
+    this->v_baseBuildNameSeparatorE = new QLineEdit(this->v_p);
 
     this->v_outputPathB = new QPushButton("Select output path",this->v_p);
     this->v_headerPathB = new QPushButton("Select header path",this->v_p);
@@ -101,6 +112,7 @@ void MainInfoWidget::init() {
     outputPathL->setAlignment(Qt::AlignCenter);
     headerPathL->setAlignment(Qt::AlignCenter);
     libraryBaseNameL->setAlignment(Qt::AlignCenter);
+    baseBuildNameSeparatorL->setAlignment(Qt::AlignCenter);
 
     this->v_outputPathE->setMaximumHeight(MAX_EDIT_HEIGHT);
     this->v_outputPathE->setLineWrapMode(QTextEdit::WidgetWidth);
@@ -112,6 +124,7 @@ void MainInfoWidget::init() {
     this->v_outputPathE->setReadOnly(true);
 
     this->v_libraryBaseNameE->setAlignment(Qt::AlignCenter);
+    this->v_baseBuildNameSeparatorE->setAlignment(Qt::AlignCenter);
 
     int row = 0;
 
@@ -125,4 +138,7 @@ void MainInfoWidget::init() {
     this->v_gLayout->addItem(new QSpacerItem(5,5,QSizePolicy::Fixed,QSizePolicy::Fixed),row++,0,1,2);
     this->v_gLayout->addWidget(libraryBaseNameL,row,0,1,1);
     this->v_gLayout->addWidget(this->v_libraryBaseNameE,row,1,1,1);
+    this->v_gLayout->addItem(new QSpacerItem(5,5,QSizePolicy::Fixed,QSizePolicy::Fixed),row++,0,1,2);
+    this->v_gLayout->addWidget(baseBuildNameSeparatorL,row,0,1,1);
+    this->v_gLayout->addWidget(this->v_baseBuildNameSeparatorE,row,1,1,1);
 }

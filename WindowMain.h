@@ -28,7 +28,7 @@ class NoticeAdapter;
  * \author Last to touch it: Sailordi
  *
  * \date Created: 2021-05-20
- * \date Last update: 2021-09-06
+ * \date Last update: 2022-10-18
 */
 class WindowMain : public QMainWindow
 {
@@ -108,10 +108,11 @@ private:
     /*! Performs the collection and separates all builds into different folders
      * \param outP - The output path
      * \param libraryBaseName - The library base name
+     * \param baseBuildNameSeparator - Separator between base name and build name
      * \param headerP - The header path
      * \param l - The list of build data
     */
-    void collectionDiffrenFolders(QString outP,QString libraryBaseName,QString headerP,QList<BuildDataP> l);
+    void collectionDiffrenFolders(QString outP,QString libraryBaseName,QString baseBuildNameSeparator,QString headerP,QList<BuildDataP> l);
     /*! Performs the collection with all builds in the same folder
      * \param outP - The output path
      * \param libraryBaseName - The library base name

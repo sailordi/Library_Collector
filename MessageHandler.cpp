@@ -418,15 +418,22 @@ void MessageHandler::errorCollectionPreformed(QString outputP,QString libraryBas
 
 }
 
-Notice* MessageHandler::collection(QString outputP,QString libraryBaseName,QString hederP,BuildDataP data) {
+Notice* MessageHandler::collection(QString outputP,QString libraryBaseName,QString baseBuildNameSeparator,QString hederP,BuildDataP data) {
     QString str = "";
 
         str.append("Library headers and library files has been collected"+Helper::newRow() );
         str.append("Library output path: "+outputP+Helper::newRow() );
-        str.append("Library base name: "+libraryBaseName+Helper::newRow(2) );
+        str.append("Library base name: "+libraryBaseName+Helper::newRow() );
+        if(baseBuildNameSeparator.isEmpty() == false) {
+            str.append("Separator between base name and build name: "+baseBuildNameSeparator+Helper::newRow() );
+        }
+        str.append(Helper::newRow() );
         str.append("Headers path: "+Helper::newRow()+hederP+Helper::newRow(2) );
 
-        str.append("Build name: "+data->buildName()+Helper::newRow() );
+        str.append("Build name: "+data->buildName()+Helper::newRow(2) );
+
+        str.append("Output name: "+libraryBaseName+libraryBaseName+data->buildName()+Helper::newRow(2) );
+
         if(data->debugPath().isEmpty() == false) {
             str.append("Debug path: "+Helper::newRow()+data->debugPath()+Helper::newRow() );
         }

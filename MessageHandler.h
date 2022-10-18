@@ -19,7 +19,7 @@ typedef QPair<Notice*,NoticeFlag> NoticePair;
  * \author Last to touch it: Sailordi
  *
  * \date Created: 2021-05-21
- * \date Last update: 2021-05-29
+ * \date Last update: 2022-10-18
 */
 namespace MessageHandler {
     /*! Checks if build data can be added
@@ -103,11 +103,12 @@ namespace MessageHandler {
     /*! Collection is done
      * \param outpuPt - The output path
      * \param libraryBaseName - The library base name
+     * \param baseBuildNameSeparator - Separator between base name and build name
      * \param headerP - The header path
      * \param data - The build data
      * \returns Notice*
     */
-    Notice* collection(QString outputP,QString libraryBaseName,QString hederP,BuildDataP data);
+    Notice* collection(QString outputP,QString libraryBaseName,QString baseBuildNameSeparator,QString hederP,BuildDataP data);
 
     /*! Data is saved / loaded
      * \param path - Path the data was saved to
