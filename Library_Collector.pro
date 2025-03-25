@@ -8,7 +8,7 @@ CONFIG -=debug_and_release
 CONFIG(release,debug|release)   { TARGET = Library_Collector }
 CONFIG(debug,debug|release)     { TARGET = Library_Collector_D }
 
-LIBRARIES_PATH = D:/Coding/Libs/Libraries_V5
+LIBRARIES_PATH = C:/Code/Libs/Libraries_V5_1_1
 LIBRARIES_INCLUDE = $${LIBRARIES_PATH}/includes
 
 win32-g++ {
