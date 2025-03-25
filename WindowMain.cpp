@@ -239,7 +239,7 @@ void WindowMain::updateSelectedExcludePathMenuClicked() {
 
         l->replace(oldPos,str);
 
-        this->v_excludedPathsW->update();
+        this->v_excludedPathsW->updateView();
 }
 
 void WindowMain::removeSelectedExcludePathMenuClicked() {
@@ -261,7 +261,7 @@ void WindowMain::removeSelectedExcludePathMenuClicked() {
             l->removeAt(s.at(i) );
         }
 
-        this->v_excludedPathsW->update();
+        this->v_excludedPathsW->updateView();
 }
 
 void WindowMain::preformCollectionBtnClicked() {

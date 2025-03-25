@@ -50,5 +50,10 @@ Fixed issue where some of the menu items were not connected to the slots require
 ```
 ## V5
 ```
-Updated to use c++17 and to use Qt6
+Updated to use c++17 and to use Qt 6.3.0
 Added the option to add a separator between Base name and Build name
+```
+## V5_1
+Updated to use Qt 6.8.1
+Updated to use newest version of the libraries the progam uses
+Fixed issue with exclude path removing and updating not updating UI
